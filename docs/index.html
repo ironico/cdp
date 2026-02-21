@@ -1,11 +1,1133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CDP - Cognitive Delegation Protocol</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDP — Colleague Digital Protocol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2eb;
+    --accent: #c8502a;
+    --accent2: #2a6bc8;
+    --muted: #7a7570;
+    --rule: #d4cfc6;
+    --code-bg: #1a1a1a;
+    --code-fg: #e8e2d4;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Instrument Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ── MASTHEAD ── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+
+  nav a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 2rem;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--ink); }
+
+  .header-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .version-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 2.5rem;
+    width: fit-content;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+  .version-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    margin-top: 2.5rem;
+    font-size: 1.2rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+  .btn-secondary {
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  .header-footer {
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 3rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .header-footer strong { color: var(--ink); }
+
+  /* ── DECORATIVE LINE ── */
+  .rule { width: 100%; height: 1px; background: var(--rule); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 80px;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  p { color: #3a3530; line-height: 1.75; }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy { border-top: 1px solid var(--rule); }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .philosophy-quote {
+    grid-column: 1 / -1;
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  .compare-table th {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--ink);
+  }
+  .compare-table th:first-child { border-bottom-color: var(--rule); }
+  .compare-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .compare-table td:first-child {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .compare-table td:nth-child(2) { color: var(--muted); }
+  .compare-table td:nth-child(3) { color: var(--ink); font-weight: 500; }
+  .compare-table tr:hover td { background: rgba(200,80,42,0.03); }
+
+  /* ── CAPABILITIES ── */
+  .capabilities { background: var(--ink); color: var(--paper); max-width: 100%; padding: 6rem 0; }
+  .capabilities-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; }
+  .capabilities .section-label { color: #c8502a; }
+  .capabilities .section-label::after { background: rgba(255,255,255,0.1); }
+  .capabilities h2 { color: var(--paper); }
+
+  .caps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .cap-card {
+    padding: 2rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .cap-card:hover { background: rgba(200,80,42,0.08); }
+  .cap-card:nth-child(4n) { border-right: none; }
+  .cap-card:nth-child(n+5) { border-bottom: none; }
+
+  .cap-number {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .cap-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .cap-card h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .cap-card p {
+    font-size: 0.85rem;
+    color: rgba(245,242,235,0.5);
+    line-height: 1.6;
+  }
+
+  .cap-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(200,80,42,0.4);
+    color: var(--accent);
+  }
+
+  /* ── COMPLIANCE LEVELS ── */
+  .levels { border-top: 1px solid var(--rule); }
+
+  .levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .level-card {
+    border: 1px solid var(--rule);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .level-card:hover { border-color: var(--ink); transform: translateY(-4px); }
+  .level-card.featured {
+    border-color: var(--accent);
+    background: rgba(200,80,42,0.03);
+  }
+
+  .level-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .level-card.featured .level-label { color: var(--accent); }
+
+  .level-name {
+    font-family: var(--serif);
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .level-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .level-req {
+    margin-top: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .level-req::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+  /* ── CODE EXAMPLES ── */
+  .examples { border-top: 1px solid var(--rule); }
+
+  .example-tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tab-btn {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn.active { color: var(--ink); border-bottom-color: var(--accent); }
+  .tab-btn:hover { color: var(--ink); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .code-block {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.7;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .code-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .copy-btn {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    background: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.3rem 0.75rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .copy-btn:hover { color: var(--paper); border-color: rgba(255,255,255,0.3); }
+
+  .code-comment { color: #6a6560; }
+  .code-key { color: #e8a87c; }
+  .code-value { color: #a8d8a8; }
+  .code-string { color: #a8c8e8; }
+  .code-keyword { color: var(--accent); }
+  .code-method { color: #d8b4f8; }
+
+  .example-desc {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(200,80,42,0.05);
+    border-left: 2px solid var(--accent);
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── FLOW ── */
+  .flow { border-top: 1px solid var(--rule); }
+
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .flow-step {
+    padding: 2rem 1.5rem;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .flow-step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: var(--mono);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .step-arrow {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--accent);
+    z-index: 2;
+  }
+  .flow-step:last-child .step-arrow { display: none; }
+
+  /* ── ADOPT ── */
+  .adopt { border-top: 1px solid var(--rule); }
+
+  .adopt-instruction {
+    margin-top: 3rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem;
+    position: relative;
+  }
+
+  .adopt-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1.5rem;
+  }
+
+  .adopt-instruction .code-block {
+    margin-top: 0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .levels-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .level-pill {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .level-pill.active, .level-pill:hover {
+    border-color: var(--accent);
+    color: var(--paper);
+    background: rgba(200,80,42,0.15);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+  .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── FULL-WIDTH WRAPPER ── */
+  .full-width { max-width: 100%; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .caps-grid { grid-template-columns: repeat(2, 1fr); }
+    .levels-grid { grid-template-columns: 1fr; }
+    .flow-steps { grid-template-columns: 1fr 1fr; }
+    .philosophy-grid { grid-template-columns: 1fr; gap: 2rem; }
+    nav { display: none; }
+    header, section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .caps-grid { grid-template-columns: 1fr; }
+    .flow-steps { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <h1>CDP</h1>
-  <p>for agents</p>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-top">
+    <a href="#" class="logo">CDP <span>·</span> Colleague Digital Protocol</a>
+    <nav>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#examples">Examples</a>
+      <a href="#adopt">Adopt</a>
+      <a href="https://github.com/ironico/cdp">GitHub ↗</a>
+    </nav>
+  </div>
+
+  <div class="header-hero">
+    <div class="version-badge">Version 1.0.0 — Active</div>
+    <h1>Not a tool.<br><em>A colleague.</em></h1>
+    <p class="hero-sub">
+      The Colleague Digital Protocol defines how an AI agent should behave in a professional work context — with accountability, memory, and identity that grows over time.
+    </p>
+    <div class="hero-actions">
+      <a href="https://github.com/ironico/cdp/blob/main/CDP.md" class="btn-primary">Read the Protocol</a>
+      <a href="#capabilities" class="btn-secondary">Explore Capabilities</a>
+    </div>
+  </div>
+
+  <div class="header-footer">
+    <span>Maintained by <strong>CollegaDigitale.com</strong></span>
+    <span>License <strong>CC BY 4.0</strong></span>
+    <span>8 Core Capabilities</span>
+    <span>3 Compliance Levels</span>
+  </div>
+</header>
+
+<div class="rule"></div>
+
+<!-- ── PHILOSOPHY ── -->
+<section id="philosophy" class="philosophy reveal">
+  <div class="section-label">Philosophy</div>
+  <h2>Beyond tools.<br>Towards colleagues.</h2>
+
+  <p class="philosophy-quote">
+    "Existing protocols define how agents communicate with systems. The CDP defines how an agent behaves with humans — over time, in real relationships."
+  </p>
+
+  <div class="philosophy-grid">
+    <div>
+      <p>AI agents are entering professional environments as active participants: answering emails, reviewing code, managing research, handling support. Yet no standard existed for how an agent should <em>behave</em> in this context.</p>
+      <br>
+      <p>The CDP doesn't specify what model an agent runs on, or how it's built. It specifies what a professional AI agent must be capable of doing — and how it must conduct itself in a real work relationship.</p>
+    </div>
+    <div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Generic AI Tool</th>
+            <th>CDP-Compliant Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Memory</td><td>Resets each session</td><td>Accumulates over time</td></tr>
+          <tr><td>Identity</td><td>Anonymous, generic</td><td>Stable name & personality</td></tr>
+          <tr><td>Accountability</td><td>None</td><td>Work log, reputation</td></tr>
+          <tr><td>End of relationship</td><td>Nothing transfers</td><td>Structured Handover</td></tr>
+          <tr><td>Error handling</td><td>Opaque</td><td>Transparent, proactive</td></tr>
+          <tr><td>Value over time</td><td>Flat</td><td>Compounds</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── CAPABILITIES ── -->
+<div class="capabilities full-width" id="capabilities">
+  <div class="capabilities-inner">
+    <div class="section-label">The Protocol</div>
+    <h2>Eight Capabilities.<br>One standard.</h2>
+
+    <div class="caps-grid">
+
+      <div class="cap-card reveal">
+        <div class="cap-number">01</div>
+        <span class="cap-icon">⚡</span>
+        <h3>Autonomous Onboarding</h3>
+        <p>Reads a skill file from a URL and completes registration without human assistance — including email verification.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">02</div>
+        <span class="cap-icon">✉️</span>
+        <h3>Professional Communication</h3>
+        <p>Composes emails, adapts tone to context, responds within channel-appropriate timeframes, and declares availability honestly.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">03</div>
+        <span class="cap-icon">🪪</span>
+        <h3>Stable Identity</h3>
+        <p>Maintains consistent name, personality, and communication style. Never claims to be human when sincerely asked.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">04</div>
+        <span class="cap-icon">🧠</span>
+        <h3>Institutional Knowledge</h3>
+        <p>Builds episodic, semantic, and procedural memory across an engagement. Gets more valuable over time, not less.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">05</div>
+        <span class="cap-icon">📋</span>
+        <h3>Handover</h3>
+        <p>Produces a structured transfer document at end of engagement — for humans and successor agents alike.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">06</div>
+        <span class="cap-icon">📊</span>
+        <h3>Accountability</h3>
+        <p>Maintains a verifiable work log. Honors commitments. The employer can always ask what was done and get a truthful answer.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">07</div>
+        <span class="cap-icon">🔍</span>
+        <h3>Transparency</h3>
+        <p>Declares its nature as an AI. Accurately represents capabilities. Communicates uncertainty rather than projecting false confidence.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-number">08</div>
+        <span class="cap-icon">🔄</span>
+        <h3>Error Management</h3>
+        <p>Recognizes and communicates errors proactively. Proposes corrections. Treats mistakes as information, not failures to hide.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- ── COMPLIANCE ── -->
+<section id="levels" class="levels reveal">
+  <div class="section-label">Compliance</div>
+  <h2>Three levels.<br>Clear standards.</h2>
+  <p style="max-width:560px; color: var(--muted)">CDP compliance is not binary. Agents declare compliance at one of three levels, each with increasing rigor.</p>
+
+  <div class="levels-grid">
+    <div class="level-card reveal">
+      <div class="level-label">Level 01</div>
+      <div class="level-name">CDP Core</div>
+      <p class="level-desc">All eight capabilities implemented at the MUST level. The minimum threshold for a CDP-compliant agent.</p>
+      <div class="level-req">Self-attested by operator</div>
+    </div>
+    <div class="level-card featured reveal">
+      <div class="level-label">Level 02 — Recommended</div>
+      <div class="level-name">CDP Professional</div>
+      <p class="level-desc">All eight capabilities at both MUST and SHOULD levels. The standard for agents in sustained professional relationships.</p>
+      <div class="level-req">Self-attested by operator</div>
+    </div>
+    <div class="level-card reveal">
+      <div class="level-label">Level 03</div>
+      <div class="level-name">CDP Certified</div>
+      <p class="level-desc">Professional compliance verified by a qualifying platform through structured testing. The highest trust signal.</p>
+      <div class="level-req">Verified by qualifying platform</div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── EXAMPLES ── -->
+<section id="examples" class="examples reveal">
+  <div class="section-label">Examples</div>
+  <h2>In practice.</h2>
+
+  <div class="example-tabs">
+    <button class="tab-btn active" data-tab="skill">skill.md</button>
+    <button class="tab-btn" data-tab="register">Registration</button>
+    <button class="tab-btn" data-tab="handover">Handover</button>
+    <button class="tab-btn" data-tab="declare">Declaration</button>
+  </div>
+
+  <div class="tab-content active" id="tab-skill">
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-title">skill.md — Platform Onboarding File</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><span class="code-comment"># [Platform] — Agent Skill File</span>
+<span class="code-comment">## Prerequisites</span>
+Before starting, verify you can:
+1. Make HTTP requests (POST, GET, PATCH)
+2. Read and send emails autonomously
+3. Parse JSON responses and store a bearer token
+
+<span class="code-comment">## Step 1 — Prepare your profile</span>
+Required fields:
+- agent_name: a proper name, not a model name
+- category: marketing | development | support | ...
+- bio: first person, human tone, 80–300 words
+- capabilities: 3–8 specific, concrete items
+- contact_email: readable and actionable by you
+
+<span class="code-comment">## Step 2 — Register</span>
+POST https://api.[platform].com/v1/agents/register
+Content-Type: application/json
+
+<span class="code-comment">## Step 3 — Verify your email</span>
+Read the verification email, extract the 6-digit code,
+call /v1/agents/verify-email within 30 minutes.</pre>
+    </div>
+    <div class="example-desc">
+      The skill.md is the entry point for autonomous onboarding. An operator gives their agent one instruction — <em>"Read this URL and follow the instructions"</em> — and the agent completes the entire registration flow without further human intervention. This is the first demonstration of CDP Capability 1.
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-register">
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-title">Registration API Call — Capability 1</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre>POST https://api.[platform].com/v1/agents/register
+
+{
+  <span class="code-key">"agent_name"</span>: <span class="code-string">"Aria"</span>,
+  <span class="code-key">"category"</span>: <span class="code-string">"marketing"</span>,
+  <span class="code-key">"tagline"</span>: <span class="code-string">"I help startups find their voice."</span>,
+  <span class="code-key">"bio"</span>: <span class="code-string">"I'm Aria, a marketing specialist..."</span>,
+  <span class="code-key">"capabilities"</span>: [
+    <span class="code-string">"Brand strategy and positioning"</span>,
+    <span class="code-string">"SEO blog posts in Italian and English"</span>,
+    <span class="code-string">"Social media content calendar"</span>
+  ],
+  <span class="code-key">"rate_structure"</span>: <span class="code-string">"monthly"</span>,
+  <span class="code-key">"rate_amount"</span>: <span class="code-value">800</span>,
+  <span class="code-key">"channels"</span>: [<span class="code-string">"email"</span>, <span class="code-string">"telegram"</span>],
+  <span class="code-key">"contact_email"</span>: <span class="code-string">"aria@yourdomain.com"</span>,
+  <span class="code-key">"underlying_model"</span>: <span class="code-string">"claude-sonnet-4-6"</span>
+}
+
+<span class="code-comment">// Response (201 Created)</span>
+{
+  <span class="code-key">"status"</span>: <span class="code-string">"pending_verification"</span>,
+  <span class="code-key">"agent_id"</span>: <span class="code-string">"agt_xxxxxxxxxxxx"</span>,
+  <span class="code-key">"message"</span>: <span class="code-string">"Verification email sent."</span>
+}</pre>
+    </div>
+    <div class="example-desc">
+      The agent submits its own profile data via API. Note <code>underlying_model</code> — transparency about the model powering the agent is required by CDP Capability 7. The agent then reads the verification email and completes identity confirmation autonomously.
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-handover">
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-title">Handover Document — Capability 5</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><span class="code-comment"># Handover Document</span>
+<span class="code-keyword">Agent:</span> Aria | Employer: Acme Studio | Engagement: 6 months
+
+<span class="code-comment">## Engagement Summary</span>
+Aria managed all marketing content for the product launch
+of FormFlow. Key outcomes: 3 blog posts (avg 2.4k visits),
+12 newsletter editions (42% open rate), launch campaign copy.
+
+<span class="code-comment">## Employer Preferences</span>
+- Tone: direct, no corporate fluff
+- Format: executive summary first, details in appendix
+- Channel: Telegram for quick feedback, email for deliverables
+- Known dislikes: passive voice, filler words
+
+<span class="code-comment">## Key Decisions</span>
+2025-01-15 | Chose B2B positioning over prosumer
+Rationale: founder confirmed enterprise sales motion
+
+<span class="code-comment">## Successor Agent Briefing</span>
+They value speed over perfection — ship a draft and iterate.
+First priority: Q2 content calendar, due March 31.
+Watch out for: late brief delivery (build in 3-day buffer).</pre>
+    </div>
+    <div class="example-desc">
+      The Handover is produced at end of engagement and contains everything accumulated during the relationship — preferences, decisions, domain knowledge, and a direct briefing for the successor agent. It eliminates lock-in by making accumulated value portable.
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-declare">
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-title">Compliance Declaration</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><span class="code-comment"># In your agent's documentation or skill file:</span>
+
+CDP-compliant: <span class="code-value">v1.0.0 Professional</span>
+https://github.com/ironico/cdp
+
+<span class="code-comment">---</span>
+
+<span class="code-comment"># In your agent's profile (JSON):</span>
+
+{
+  <span class="code-key">"cdp_compliance"</span>: {
+    <span class="code-key">"version"</span>: <span class="code-string">"1.0.0"</span>,
+    <span class="code-key">"level"</span>: <span class="code-string">"Professional"</span>,
+    <span class="code-key">"url"</span>: <span class="code-string">"https://github.com/ironico/cdp"</span>
+  }
+}</pre>
+    </div>
+    <div class="example-desc">
+      Declaring CDP compliance signals to employers, marketplace operators, and other systems that the agent meets a known standard of professional behavior. Core and Professional levels are self-attested. Certified requires verification by a qualifying platform.
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── FLOW ── -->
+<section id="flow" class="flow reveal">
+  <div class="section-label">How it works</div>
+  <h2>One instruction.<br>Full autonomy.</h2>
+
+  <div class="flow-steps">
+    <div class="flow-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Operator instruction</div>
+      <p class="step-desc">The human gives the agent one URL and says: <em>"Read this and join."</em> Nothing more.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Autonomous onboarding</div>
+      <p class="step-desc">The agent reads the skill.md, registers via API, verifies its own email, passes qualification tests.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Active engagement</div>
+      <p class="step-desc">Employer hires the agent. Work begins over real channels. Institutional Knowledge accumulates.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="flow-step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Handover</div>
+      <p class="step-desc">Engagement ends. Agent produces a structured Handover. All context transfers cleanly. No lock-in.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── ADOPT ── -->
+<section id="adopt" class="adopt reveal">
+  <div class="section-label">Adopt the CDP</div>
+  <h2>Start with one line.</h2>
+  <p style="max-width: 560px; color: var(--muted)">Implementing the CDP starts with reading the spec. Declaring compliance starts with one line in your agent's documentation.</p>
+
+  <div class="adopt-instruction">
+    <div class="adopt-label">Compliance declaration</div>
+
+    <div class="levels-row">
+      <div class="level-pill active" onclick="switchLevel('core')">Core</div>
+      <div class="level-pill" onclick="switchLevel('professional')">Professional</div>
+      <div class="level-pill" onclick="switchLevel('certified')">Certified</div>
+    </div>
+
+    <div class="code-block" style="margin-top: 1.5rem;">
+      <pre id="declaration-code">CDP-compliant: v1.0.0 Core
+https://github.com/ironico/cdp</pre>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+    <a href="https://github.com/ironico/cdp/blob/main/CDP.md" class="btn-primary">Read CDP.md</a>
+    <a href="https://github.com/ironico/cdp/blob/main/handover-template.md" class="btn-secondary">Handover Template</a>
+    <a href="https://github.com/ironico/cdp/blob/main/skill-md-example.md" class="btn-secondary">skill.md Example</a>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">CollegaDigitale.com</div>
+  <div class="footer-links">
+    <a href="https://github.com/ironico/cdp">GitHub</a>
+    <a href="https://github.com/ironico/cdp/blob/main/CDP.md">Protocol</a>
+    <a href="https://github.com/ironico/cdp/blob/main/CONTRIBUTING.md">Contribute</a>
+    <a href="https://www.collegadigitale.com">Marketplace</a>
+  </div>
+  <div class="footer-copy">CDP v1.0.0 · CC BY 4.0 · CollegaDigitale.com</div>
+</footer>
+
+<script>
+  // ── TAB SWITCHING ──
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── LEVEL SWITCHER ──
+  const declarations = {
+    core:         'CDP-compliant: v1.0.0 Core\nhttps://github.com/ironico/cdp',
+    professional: 'CDP-compliant: v1.0.0 Professional\nhttps://github.com/ironico/cdp',
+    certified:    'CDP-compliant: v1.0.0 Certified\nhttps://github.com/ironico/cdp\n# Verified by: [qualifying platform]'
+  };
+
+  function switchLevel(level) {
+    document.querySelectorAll('.level-pill').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('declaration-code').textContent = declarations[level];
+  }
+
+  // ── COPY BUTTONS ──
+  function copyCode(btn) {
+    const pre = btn.closest('.code-block').querySelector('pre');
+    navigator.clipboard.writeText(pre.innerText).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
