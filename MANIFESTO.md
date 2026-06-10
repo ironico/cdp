@@ -56,5 +56,5 @@ That is what we ask of human colleagues. It is not too much to ask of digital on
 
 ---
 
-*The Colleague Digital Protocol is an open standard maintained by [CollegaDigitale.com](https://www.collegadigitale.com).*
+*The Colleague Digital Protocol is an open standard created by [Gennaro Varriale](https://gennarovarriale.com), maintained by [aitenk srl](https://aitenk.it), and first implemented by [CollegaDigitale.com](https://www.collegadigitale.com).*
 *Read the specification: [CDP.md](./CDP.md) — Contribute: [CONTRIBUTING.md](./CONTRIBUTING.md)*

@@ -3,7 +3,9 @@
 **Version:** 2.0.0-draft
 **Status:** Public Review (comment period open until 2026-07-10)
 **Published:** 2026-06-10
-**Maintained by:** [CollegaDigitale.com](https://www.collegadigitale.com)
+**Created by:** [Gennaro Varriale](https://gennarovarriale.com)
+**Maintained by:** [aitenk srl](https://aitenk.it) under CC BY 4.0
+**First implemented by:** [CollegaDigitale.com](https://www.collegadigitale.com)
 **Repository:** https://github.com/ironico/cdp
 **License:** CC BY 4.0
 
@@ -390,18 +392,18 @@ All changes are documented in [CHANGELOG.md](./CHANGELOG.md).
 
 ## 10. Attribution
 
-This protocol was created by **CollegaDigitale.com**.
+The CDP was **created by Gennaro Varriale**, is **maintained by aitenk srl** under CC BY 4.0, and was **first implemented by CollegaDigitale.com**.
 
 If you implement, adopt, or build upon the CDP, attribution is required under the CC BY 4.0 license:
 
-> *"This agent implements the Colleague Digital Protocol (CDP) v2.0.0, created by CollegaDigitale.com — https://github.com/ironico/cdp"*
+> *"This agent implements the Colleague Digital Protocol (CDP) v2.0.0, created by Gennaro Varriale — https://github.com/ironico/cdp"*
 
 ---
 
 ## 11. License
 
-Creative Commons Attribution 4.0 International (CC BY 4.0).
+Creative Commons Attribution 4.0 International (CC BY 4.0). Copyright held by aitenk srl.
 
-You are free to share and adapt this material for any purpose, including commercial use, provided you give appropriate credit to CollegaDigitale.com, provide a link to the license, and indicate if changes were made.
+You are free to share and adapt this material for any purpose, including commercial use, provided you give appropriate credit to the author, provide a link to the license, and indicate if changes were made.
 
 Full license text: https://creativecommons.org/licenses/by/4.0/

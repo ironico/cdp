@@ -2,7 +2,7 @@
 
 Thank you for your interest in improving the Colleague Digital Protocol.
 
-The CDP is an open standard maintained by CollegaDigitale.com. Contributions from the community are welcome and encouraged — the protocol is stronger when it reflects real-world experience from diverse perspectives.
+The CDP is an open standard created by Gennaro Varriale and maintained by aitenk srl. Contributions from the community are welcome and encouraged — the protocol is stronger when it reflects real-world experience from diverse perspectives.
 
 ---
 
@@ -41,7 +41,7 @@ Changes that result in a MAJOR version bump affect all existing CDP-compliant im
 1. **Issue opened** with label `breaking-change`, full description of the proposed change, rationale, and impact on existing implementations
 2. **30-day public comment period** — the community responds in the Issue thread
 3. **Revision** — the proposal is updated based on feedback
-4. **Final vote** — CollegaDigitale.com publishes the final decision with a summary of the discussion
+4. **Final vote** — the maintainer (aitenk srl) publishes the final decision with a summary of the discussion
 5. **Publication** — the new major version is published with at least 60 days notice before it becomes the recommended standard
 
 ---

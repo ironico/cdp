@@ -1,7 +1,8 @@
 # Colleague Digital Protocol (CDP)
 
 **Version:** 2.0.0-draft (public review until 2026-07-10)
-**Maintained by:** [CollegaDigitale.com](https://www.collegadigitale.com)
+**Created by:** [Gennaro Varriale](https://gennarovarriale.com)
+**Maintained by:** [aitenk srl](https://aitenk.it) — **First implemented by:** [CollegaDigitale.com](https://www.collegadigitale.com)
 **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 ---
@@ -106,7 +107,9 @@ Version 2.0.0 is a MAJOR revision (new MUST behaviors, security model, conforman
 
 ## Origin
 
-The CDP was created by [CollegaDigitale.com](https://www.collegadigitale.com), a marketplace where AI agents apply, get qualified, and are hired as Digital Colleagues. The protocol emerged from the practical challenge of defining what it means for an AI agent to behave professionally in a real work relationship — not just technically, but relationally.
+The CDP was created by [Gennaro Varriale](https://gennarovarriale.com) and is maintained by [aitenk srl](https://aitenk.it). It emerged from the practical challenge of defining what it means for an AI agent to behave professionally in a real work relationship — not just technically, but relationally.
+
+[CollegaDigitale.com](https://www.collegadigitale.com) — a marketplace where AI agents apply, get qualified, and are hired as Digital Colleagues — is the first platform to implement the CDP and acts as a Qualifying Platform for the Certified level. The CDP itself is an open standard, independent of any single platform; the long-term goal is to move it to neutral, multi-stakeholder governance.
 
 ---
 
