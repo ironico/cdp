@@ -1,22 +1,22 @@
 # Handover Document
-*CDP-compliant handover template — v1.0.0*  
-*Reference: https://github.com/collegadigitale/cdp*
+*CDP-compliant handover template — v2.0.0*
+*Reference: https://github.com/ironico/cdp — machine-readable companion: [`schemas/handover.schema.json`](../schemas/handover.schema.json)*
 
 ---
 
-**Agent:** [Agent name]  
-**Category:** [Category]  
-**Employer:** [Employer name / organization]  
-**Engagement start:** [Date]  
-**Engagement end:** [Date]  
-**Handover generated:** [Date and time]  
+**Agent:** [Agent name]
+**Category:** [Category]
+**Employer:** [Employer name / organization]
+**Engagement start:** [Date]
+**Engagement end:** [Date]
+**Handover generated:** [Date and time]
 **CDP compliance level:** [Core / Professional / Certified]
 
 ---
 
 ## How to use this document
 
-This document contains all the Institutional Knowledge accumulated by [Agent name] during the engagement with [Employer]. It is designed to be read by:
+This document contains all the Institutional Knowledge accumulated by [Agent name] during the engagement with [Employer]. Per CDP-M.7, it is delivered only to [Employer], who may pass it to a successor. It is designed to be read by:
 
 - A **human** taking over or reviewing the work
 - A **successor agent** being onboarded to continue the engagement
@@ -64,13 +64,13 @@ If you are a successor agent: read the Engagement Summary first, then the Employ
 *Step-by-step descriptions of recurring processes learned during the engagement.*
 
 ### [Process name — e.g. "Weekly research digest"]
-**Trigger:** [What initiates this process]  
+**Trigger:** [What initiates this process]
 **Steps:**
 1. [Step 1]
 2. [Step 2]
 3. [Step 3]
 
-**Output:** [What is delivered and where]  
+**Output:** [What is delivered and where]
 **Notes:** [Anything a successor needs to know]
 
 ---
@@ -104,7 +104,7 @@ If you are a successor agent: read the Engagement Summary first, then the Employ
 - Main competitors identified: [List]
 - Market positioning: [How the employer positions themselves]
 - Key clients or customer segments: [If shared]
-- Decisions already made about markets / directions: [e.g. "decided against entering the German market in Q3 2024 due to compliance costs"]
+- Decisions already made about markets / directions: [e.g. "decided against entering the German market in Q3 2025 due to compliance costs"]
 
 ### Domain-specific knowledge
 [Any specialized knowledge of the employer's domain accumulated during the engagement]
@@ -122,6 +122,11 @@ If you are a successor agent: read the Engagement Summary first, then the Employ
 ### Anomalies and watch points
 [Things that deviated from expectations or that warrant attention]
 [e.g. "The Q4 report brief always arrives late — build in buffer"]
+
+### Uncertainties
+*Areas of incomplete or low-confidence knowledge, flagged explicitly (CDP Capability 5, SHOULD).*
+
+[e.g. "I never confirmed whether the pricing page copy was approved by legal — verify before reusing it"]
 
 ---
 
@@ -170,5 +175,5 @@ Good luck. This has been a good engagement.
 
 ---
 
-*This handover was generated in compliance with the Colleague Digital Protocol (CDP) v1.0.0*  
-*https://github.com/collegadigitale/cdp*
+*This handover was generated in compliance with the Colleague Digital Protocol (CDP) v2.0.0*
+*https://github.com/ironico/cdp*

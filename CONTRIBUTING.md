@@ -14,7 +14,9 @@ The CDP is an open standard maintained by CollegaDigitale.com. Contributions fro
 
 **New SHOULD behaviors** — If you have identified a best practice that should be recommended (but not required) for CDP-compliant agents, open an Issue with the label `enhancement` and describe the behavior, the rationale, and examples.
 
-**New MUST behaviors** — Proposals to add new required behaviors are significant changes and must go through the full review process described below. Open an Issue with the label `breaking-change`.
+**New MUST behaviors** — Proposals to add new required behaviors are significant changes and must go through the full review process described below. Open an Issue with the label `breaking-change`. A proposal for a new MUST should include, where feasible, a corresponding conformance criterion ([T] or [A]) — a requirement that cannot be verified is a weaker requirement.
+
+**Conformance tests and schemas** — Improvements to the test procedures in `conformance/` or to the JSON Schemas in `schemas/` are welcome. New tests for existing requirements are MINOR changes; changes that make a previously passing agent fail are MAJOR.
 
 **Real-world case studies** — If you have implemented CDP compliance and want to share learnings, open a Discussion. These are valuable for the community and may inform future versions.
 
@@ -26,6 +28,7 @@ The CDP is an open standard maintained by CollegaDigitale.com. Contributions fro
 |---|---|---|
 | Editorial correction | PATCH | PR → review → merge |
 | New SHOULD behavior | MINOR | Issue → discussion → PR → review → merge |
+| New conformance test (existing requirement) | MINOR | Issue → discussion → PR → review → merge |
 | New MUST behavior | MAJOR | Issue → 30-day public comment → revision → vote → merge |
 | Structural change | MAJOR | Issue → 30-day public comment → revision → vote → merge |
 

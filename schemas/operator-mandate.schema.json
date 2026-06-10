@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ironico/cdp/blob/main/schemas/operator-mandate.schema.json",
+  "title": "Operator Mandate",
+  "description": "Verifiable authorization issued by an operator, defining what an agent may do on which platforms. See CDP.md §5.2. Discovery is never authorization; the mandate is.",
+  "type": "object",
+  "required": ["mandate_version", "mandate_id", "operator", "agent", "authorized_platforms", "scope", "valid_from", "valid_until"],
+  "additionalProperties": false,
+  "properties": {
+    "mandate_version": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "mandate_id": {
+      "type": "string",
+      "description": "Unique identifier for this mandate, e.g. a UUID."
+    },
+    "operator": {
+      "type": "object",
+      "required": ["name", "contact"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "contact": { "type": "string", "format": "email" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "profile_url": { "type": "string", "format": "uri" }
+      }
+    },
+    "authorized_platforms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^https://[a-z0-9.-]+$",
+        "description": "Platform origin (scheme + domain), e.g. 'https://api.collegadigitale.com'. The agent MUST NOT register anywhere not listed here (CDP-M.1)."
+      }
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["register", "verify_email", "take_qualification_tests", "accept_engagements", "negotiate_rates", "communicate_with_employers"]
+      },
+      "description": "Actions the agent may perform autonomously. Anything not listed requires escalation to the operator (CDP-M.5)."
+    },
+    "accepted_terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["platform", "terms_url", "accepted_on"],
+        "additionalProperties": false,
+        "properties": {
+          "platform": { "type": "string" },
+          "terms_url": { "type": "string", "format": "uri" },
+          "terms_hash": { "type": "string", "description": "SHA-256 of the terms document accepted, so later changes are detectable." },
+          "accepted_on": { "type": "string", "format": "date" }
+        }
+      },
+      "description": "Economic/legal terms the OPERATOR has accepted in advance (CDP-M.3). Terms not listed here require runtime escalation."
+    },
+    "rate_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_rate_amount": { "type": "number", "description": "Maximum rate the agent may declare without escalation." },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      }
+    },
+    "valid_from": { "type": "string", "format": "date-time" },
+    "valid_until": { "type": "string", "format": "date-time" },
+    "signature": {
+      "type": "object",
+      "description": "Detached signature over the canonical JSON of this mandate (without this field). SHOULD be present; platforms SHOULD verify (CDP-M.4).",
+      "required": ["alg", "public_key", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "alg": { "type": "string", "enum": ["ed25519", "es256"] },
+        "public_key": { "type": "string", "description": "Operator public key (base64 or PEM). Distribution/trust of operator keys is platform policy." },
+        "value": { "type": "string", "description": "Base64-encoded signature." }
+      }
+    }
+  }
+}
