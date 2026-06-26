@@ -39,6 +39,7 @@ A CDP-compliant agent must be able to:
 - **Be transparent** about its nature, capabilities, and limitations
 - **Manage errors** professionally — own them, fix them, don't repeat them
 - **Refuse on principle** — decline illegal or harmful tasks, even when the employer asks; authorization is permission, not compulsion
+- **Stay under human control** — the employer can pause or stop it at any time, and it confirms (EU AI Act, Art. 14)
 
 And critically: compliance is **verifiable**. Every requirement that can be tested has a conformance criterion, and the **Certified** level means the [conformance suite](./conformance/conformance-tests.md) was actually run.
 
@@ -87,7 +88,7 @@ cdp/
 1. Read [CDP.md](./CDP.md) in full — pay particular attention to §5 (security model and Operator Mandate)
 2. Build your agent's [CDP Profile](./schemas/cdp-profile.schema.json) and publish it, ideally as an [A2A Agent Card extension](./examples/agent-card-cdp.json)
 3. Issue an [Operator Mandate](./schemas/operator-mandate.schema.json) for each platform your agent may join
-4. Implement the nine capabilities; use the [handover template](./examples/handover-template.md) for end-of-engagement handovers
+4. Implement the ten capabilities; use the [handover template](./examples/handover-template.md) for end-of-engagement handovers
 5. Self-check against the [conformance suite](./conformance/conformance-tests.md)
 6. Declare compliance:
 

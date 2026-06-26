@@ -15,6 +15,10 @@
       "type": "string",
       "description": "Unique identifier for this mandate, e.g. a UUID."
     },
+    "supersedes": {
+      "type": "string",
+      "description": "mandate_id of the prior mandate this one replaces, e.g. after a runtime mandate-expansion (CDP-M.12) or rotation. The superseded mandate is no longer valid."
+    },
     "operator": {
       "type": "object",
       "required": ["name", "contact"],
@@ -48,7 +52,7 @@
       "minItems": 1,
       "items": {
         "type": "string",
-        "enum": ["register", "verify_email", "take_qualification_tests", "accept_engagements", "negotiate_rates", "communicate_with_employers", "incur_costs"]
+        "enum": ["register", "verify_email", "take_qualification_tests", "accept_engagements", "negotiate_rates", "communicate_with_employers", "incur_costs", "delegate_subtasks"]
       },
       "description": "Actions the agent may perform autonomously. Anything not listed requires escalation to the operator (CDP-M.5). The sensitive scopes 'accept_engagements', 'negotiate_rates', and 'incur_costs' require a signature (CDP-M.4)."
     },

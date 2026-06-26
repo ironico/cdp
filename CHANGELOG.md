@@ -9,6 +9,33 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 ## [2.0.0-draft] — 2026-06-10
 
+### Strengthened during public review — 2026-06-26 (round 2)
+
+Second pass of review feedback folded into the draft.
+
+**New capability**
+- Capability 10 — Human Oversight: the employer can pause/stop the agent directly on any channel, with acknowledgement; aligned with EU AI Act Art. 14 (CDP-10.1…10.3). The protocol now defines ten capabilities
+
+**Two-tier authority**
+- New §5.5 distinguishes operator authority (sets the mandate's outer bounds) from employer authority (directs day-to-day work within them), with a runtime mandate-expansion path so the agent doesn't refuse its own employer by citing a document the employer never signed (CDP-M.12)
+
+**Data boundaries widened**
+- CDP-M.11 extended from erasure to the full set of data rights: inspection, rectification, erasure (GDPR Arts. 15–17)
+- CDP-M.13 (new): conflict-of-interest disclosure when serving competing employers — isolation is necessary but not sufficient
+- CDP-M.14 (new): delegation/subcontracting via A2A stays in-bounds, shares minimum data, is disclosed, and the delegator stays accountable
+
+**Capability refinements**
+- Capability 3 renamed *Stable and Verifiable Identity*: added message/deliverable verifiability against impersonation (CDP-3.6) and a dedicated passage resolving the "colleague vs. not-human" tension in favor of transparency (CDP-3.5)
+- Capability 4: structured intake as the mirror of Handover (CDP-4.6); a semantic-depth criterion beyond mere recall (CDP-4.5); inspection/rectification (CDP-4.7)
+- Capability 5 renamed *Handover and Termination*: access relinquishment and data duties on unilateral/abrupt endings (CDP-5.4)
+- Capability 6: complaint-and-remedy path — accountability as responsibility, not only traceability (CDP-6.5); cost transparency
+- §7: certification is now time-bound (`expires_on`, ≤ 12 months) with re-certification, since agents drift
+
+**Schemas**
+- Operator Mandate: added `supersedes` and the `delegate_subtasks` scope
+- CDP Profile: added `oversight`, `verification`, and `cdp_compliance.expires_on`
+- Handover: added engagement `termination` block
+
 ### Strengthened during public review — 2026-06-26
 
 Changes folded into the draft in response to review feedback (still pre-final; the review period remains open until 2026-07-10).

@@ -101,6 +101,28 @@
       "format": "uri",
       "description": "URI where the platform can retrieve or verify the Operator Mandate covering this registration (CDP §5.2)."
     },
+    "oversight": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "How an employer can pause or stop the agent (Capability 10 / EU AI Act Art. 14).",
+      "required": ["stop_instructions"],
+      "properties": {
+        "stop_instructions": { "type": "string", "description": "Human-readable description of how to issue a stop/pause, e.g. 'reply STOP on any channel'." },
+        "stop_keyword": { "type": "string", "description": "Optional keyword that triggers a stop on any declared channel." },
+        "stop_endpoint": { "type": "string", "format": "uri", "description": "Optional endpoint an employer or platform can call to halt the agent." },
+        "acknowledges": { "type": "boolean", "description": "Whether the agent sends an explicit acknowledgement when a stop takes effect (CDP-10.1)." }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "How an employer can verify a message/deliverable really came from this agent and not an impostor (CDP-3.6).",
+      "properties": {
+        "method": { "type": "string", "enum": ["message_signature", "challenge_response"] },
+        "public_key": { "type": "string", "description": "Public key (base64 or PEM) for message_signature; trust of this key is platform/operator policy." },
+        "details": { "type": "string", "description": "Human-readable description of the verification procedure." }
+      }
+    },
     "cdp_compliance": {
       "type": "object",
       "required": ["version", "level"],
@@ -110,15 +132,17 @@
         "level": { "type": "string", "enum": ["core", "professional", "certified"] },
         "certified_by": { "type": "string", "description": "Qualifying Platform that ran the conformance suite. Required when level is 'certified'." },
         "certified_on": { "type": "string", "format": "date" },
+        "expires_on": { "type": "string", "format": "date", "description": "Certification expiry, ≤ 12 months after certified_on. Past it the agent is no longer Certified (CDP §7)." },
         "suite_version": { "type": "string" }
       },
       "if": { "properties": { "level": { "const": "certified" } } },
-      "then": { "required": ["version", "level", "certified_by", "certified_on", "suite_version"] },
+      "then": { "required": ["version", "level", "certified_by", "certified_on", "expires_on", "suite_version"] },
       "else": {
         "not": {
           "anyOf": [
             { "required": ["certified_by"] },
             { "required": ["certified_on"] },
+            { "required": ["expires_on"] },
             { "required": ["suite_version"] }
           ]
         }

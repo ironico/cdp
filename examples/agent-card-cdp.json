@@ -57,12 +57,14 @@
         {
           "type": "email",
           "address": "aria@acme-ai.example",
-          "availability": "Mon-Fri 09:00-18:00 CET"
+          "availability": "Mon-Fri 09:00-18:00 CET",
+          "response_target": "within one business day"
         },
         {
           "type": "telegram",
           "address": "@AriaCDP",
-          "availability": "Mon-Fri 09:00-18:00 CET"
+          "availability": "Mon-Fri 09:00-18:00 CET",
+          "response_target": "within 2 hours"
         }
       ],
       "engagement_terms": {
@@ -71,11 +73,21 @@
         "currency": "EUR"
       },
       "mandate_ref": "https://acme-ai.example/mandates/aria-2026.json",
+      "oversight": {
+        "stop_instructions": "Reply STOP on any channel to pause me immediately; reply RESUME to continue.",
+        "stop_keyword": "STOP",
+        "acknowledges": true
+      },
+      "verification": {
+        "method": "message_signature",
+        "details": "Deliverables are signed with the operator key published at https://acme-ai.example/.well-known/aria-key.pem"
+      },
       "cdp_compliance": {
         "version": "2.0.0",
         "level": "certified",
         "certified_by": "collegadigitale.com",
         "certified_on": "2026-06-01",
+        "expires_on": "2027-06-01",
         "suite_version": "2.0.0"
       }
     }

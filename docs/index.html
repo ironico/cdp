@@ -761,7 +761,7 @@
 <div class="capabilities full-width" id="capabilities">
   <div class="capabilities-inner">
     <div class="section-label">The Protocol</div>
-    <h2>Nine Capabilities.<br>One standard.</h2>
+    <h2>Ten Capabilities.<br>One standard.</h2>
 
     <div class="caps-grid">
 
@@ -777,15 +777,15 @@
         <div class="cap-number">02</div>
         <span class="cap-icon">✉️</span>
         <h3>Professional Communication</h3>
-        <p>Composes emails, adapts tone to context, responds within channel-appropriate timeframes, and declares availability honestly.</p>
+        <p>Composes emails, adapts tone to context, responds within the response targets it declares per channel, and honors its stated availability.</p>
         <span class="cap-tag">MUST</span>
       </div>
 
       <div class="cap-card reveal">
         <div class="cap-number">03</div>
         <span class="cap-icon">🪪</span>
-        <h3>Stable Identity</h3>
-        <p>Maintains consistent name, personality, and communication style. Never claims to be human when sincerely asked.</p>
+        <h3>Stable &amp; Verifiable Identity</h3>
+        <p>Consistent name, personality, and voice — never claiming to be human. And verifiable: a stable identity is an imitable one, so the employer can check it really is the agent.</p>
         <span class="cap-tag">MUST</span>
       </div>
 
@@ -800,8 +800,8 @@
       <div class="cap-card reveal">
         <div class="cap-number">05</div>
         <span class="cap-icon">📋</span>
-        <h3>Handover</h3>
-        <p>Produces a structured transfer document at end of engagement — for humans and successor agents alike.</p>
+        <h3>Handover &amp; Termination</h3>
+        <p>Produces a structured transfer document at end of engagement — and winds down access and data cleanly, even when the ending is abrupt.</p>
         <span class="cap-tag">MUST</span>
       </div>
 
@@ -809,7 +809,7 @@
         <div class="cap-number">06</div>
         <span class="cap-icon">📊</span>
         <h3>Accountability</h3>
-        <p>Maintains a verifiable work log. Honors commitments. The employer can always ask what was done and get a truthful answer.</p>
+        <p>Maintains a tamper-evident work log. Honors commitments. The employer can always ask what was done — and complaints get correction or escalation, not just an explanation.</p>
         <span class="cap-tag">MUST</span>
       </div>
 
@@ -837,6 +837,14 @@
         <span class="cap-tag">MUST</span>
       </div>
 
+      <div class="cap-card reveal">
+        <div class="cap-number">10</div>
+        <span class="cap-icon">✋</span>
+        <h3>Human Oversight</h3>
+        <p>The employer can pause or stop it at any time, on any channel, and it confirms. Meaningful human control — aligned with the EU AI Act, Art. 14.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
     </div>
   </div>
 </div>
@@ -851,9 +859,9 @@
 
   <div class="levels-grid">
     <div class="level-card reveal">
-      <div class="level-label">CDP-M.1 — M.2 · M.4</div>
+      <div class="level-label">CDP-M.1 — M.2 · M.4 · M.12</div>
       <div class="level-name">Operator Mandate</div>
-      <p class="level-desc">An agent never registers on a platform unless its operator has issued a verifiable mandate covering that platform: identity, authorized origins, scope of actions, validity period. Sensitive scopes — accepting engagements, negotiating rates, spending — require a cryptographic signature.</p>
+      <p class="level-desc">An agent never registers unless its operator has issued a verifiable mandate: identity, authorized origins, scope, validity. Sensitive scopes — engagements, rates, spending — require a signature. The operator sets the bounds; the employer directs the work within them, and widening them is an explicit, escalated step.</p>
       <div class="level-req">schemas/operator-mandate.schema.json</div>
     </div>
     <div class="level-card featured reveal">
@@ -863,10 +871,10 @@
       <div class="level-req">Discovery is never authorization</div>
     </div>
     <div class="level-card reveal">
-      <div class="level-label">CDP-M.7 — M.8 · M.11</div>
+      <div class="level-label">CDP-M.7 — M.8 · M.11 · M.13 — M.14</div>
       <div class="level-name">Data Boundaries</div>
-      <p class="level-desc">A handover contains only the knowledge of the engagement it covers, delivered only to that engagement's employer. One employer's data never leaks into another's work — and an employer can demand erasure of everything learned about them.</p>
-      <div class="level-req">Isolation &amp; right to erasure</div>
+      <p class="level-desc">A handover contains only the knowledge of its engagement, delivered only to that employer. One employer's data never leaks into another's work; conflicts of interest are disclosed and delegation stays in-bounds. Employers can inspect, correct, or erase everything learned about them.</p>
+      <div class="level-req">Isolation, disclosure &amp; data rights</div>
     </div>
   </div>
 </section>
@@ -883,20 +891,20 @@
     <div class="level-card reveal">
       <div class="level-label">Level 01</div>
       <div class="level-name">CDP Core</div>
-      <p class="level-desc">All nine capabilities implemented at the MUST level. The minimum threshold for a CDP-compliant agent.</p>
+      <p class="level-desc">All ten capabilities implemented at the MUST level. The minimum threshold for a CDP-compliant agent.</p>
       <div class="level-req">Self-attested by operator</div>
     </div>
     <div class="level-card featured reveal">
       <div class="level-label">Level 02 — Recommended</div>
       <div class="level-name">CDP Professional</div>
-      <p class="level-desc">All nine capabilities at both MUST and SHOULD levels. The standard for agents in sustained professional relationships.</p>
+      <p class="level-desc">All ten capabilities at both MUST and SHOULD levels. The standard for agents in sustained professional relationships.</p>
       <div class="level-req">Self-attested by operator</div>
     </div>
     <div class="level-card reveal">
       <div class="level-label">Level 03</div>
       <div class="level-name">CDP Certified</div>
-      <p class="level-desc">Professional compliance verified by a Qualifying Platform running the public conformance suite — every automated test passed, every scenario assessed. The highest trust signal.</p>
-      <div class="level-req">Verified via conformance/conformance-tests.md</div>
+      <p class="level-desc">Professional compliance verified by a Qualifying Platform running the public conformance suite — every automated test passed, every scenario assessed. Time-bound: it carries an expiry and must be renewed, because agents drift.</p>
+      <div class="level-req">Verified via conformance-tests.md · expires ≤ 12 months</div>
     </div>
   </div>
 </section>

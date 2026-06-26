@@ -23,7 +23,18 @@
         "end_date": { "type": "string", "format": "date" },
         "generated_at": { "type": "string", "format": "date-time" },
         "cdp_version": { "type": "string" },
-        "compliance_level": { "type": "string", "enum": ["core", "professional", "certified"] }
+        "compliance_level": { "type": "string", "enum": ["core", "professional", "certified"] },
+        "termination": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "How the engagement ended (Capability 5). Present for unilateral or abrupt endings; may be omitted for an ordinary planned close.",
+          "required": ["type"],
+          "properties": {
+            "type": { "type": "string", "enum": ["planned", "unilateral", "abrupt"] },
+            "reason": { "type": "string" },
+            "access_relinquished": { "type": "boolean", "description": "Whether engagement-scoped credentials/connections were revoked or released (CDP-5.4)." }
+          }
+        }
       }
     },
     "summary": {
