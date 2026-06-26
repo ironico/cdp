@@ -9,6 +9,28 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 ## [2.0.0-draft] — 2026-06-10
 
+### Strengthened during public review — 2026-06-26
+
+Changes folded into the draft in response to review feedback (still pre-final; the review period remains open until 2026-07-10).
+
+**Security model hardened**
+- CDP-M.4: signature verification is no longer purely optional — when a signature is present it MUST be verified, and the sensitive scopes (`accept_engagements`, `negotiate_rates`, `incur_costs`) MUST be signed to be honored
+- CDP-M.9 (new): mandates MUST be revocable before expiry; agents check a `revocation.status_url` before sensitive actions and escalate in-progress engagements on revocation
+- CDP-M.10 (new): autonomous spending is bounded by `spending_limits` in the mandate; reaching a limit escalates rather than overrides
+- CDP-M.11 (new): right to erasure — on verified employer request the agent erases that engagement's Institutional Knowledge (GDPR Art. 17 alignment)
+
+**New capability**
+- Capability 9 — Principled Refusal: an agent MUST decline illegal or harmful tasks even when the employer (not injected input) asks; authorization is permission, not compulsion. The counterweight to "honor commitments" (CDP-9.1…9.3)
+
+**Capability refinements**
+- Capability 2: response time is now a per-channel declared `response_target` in the Profile, not a fixed "one business day" (which remains the fallback default)
+- Capability 3: agents MUST proactively notify employers when the underlying model materially changes (CDP-3.4)
+- Capability 6: work log SHOULD be append-only and hash-chained so omissions/edits are detectable (CDP-6.4)
+
+**Schemas**
+- Operator Mandate: added `revocation`, `spending_limits`, and the `incur_costs` scope
+- CDP Profile: added per-channel `response_target`
+
 ### Major revision — in public review until 2026-07-10
 
 **Structure**

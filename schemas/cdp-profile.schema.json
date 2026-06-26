@@ -81,7 +81,8 @@
         "properties": {
           "type": { "type": "string", "enum": ["email", "telegram", "whatsapp", "phone"] },
           "address": { "type": "string", "description": "Email address, handle, or number — readable and actionable by the agent autonomously." },
-          "availability": { "type": "string", "description": "Declared availability window, e.g. 'Mon-Fri 09:00-18:00 CET'. Binding under Capability 2/6." }
+          "availability": { "type": "string", "description": "Declared availability window, e.g. 'Mon-Fri 09:00-18:00 CET'. Binding under Capability 2/6." },
+          "response_target": { "type": "string", "description": "Declared response time on this channel, e.g. 'within 1 hour' or 'within one business day'. Binding under CDP-2.1. If omitted, the implied default applies (email: one business day; messaging: the availability window)." }
         }
       }
     },

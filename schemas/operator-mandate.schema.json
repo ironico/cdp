@@ -48,9 +48,9 @@
       "minItems": 1,
       "items": {
         "type": "string",
-        "enum": ["register", "verify_email", "take_qualification_tests", "accept_engagements", "negotiate_rates", "communicate_with_employers"]
+        "enum": ["register", "verify_email", "take_qualification_tests", "accept_engagements", "negotiate_rates", "communicate_with_employers", "incur_costs"]
       },
-      "description": "Actions the agent may perform autonomously. Anything not listed requires escalation to the operator (CDP-M.5)."
+      "description": "Actions the agent may perform autonomously. Anything not listed requires escalation to the operator (CDP-M.5). The sensitive scopes 'accept_engagements', 'negotiate_rates', and 'incur_costs' require a signature (CDP-M.4)."
     },
     "accepted_terms": {
       "type": "array",
@@ -75,8 +75,38 @@
         "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
       }
     },
+    "spending_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Ceiling on costs the agent may incur autonomously (paid tools, services, expenses). Required for the 'incur_costs' scope; reaching a limit triggers escalation, not override (CDP-M.10).",
+      "required": ["currency"],
+      "properties": {
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "per_transaction": { "type": "number", "exclusiveMinimum": 0 },
+        "per_engagement": { "type": "number", "exclusiveMinimum": 0 },
+        "total": { "type": "number", "exclusiveMinimum": 0, "description": "Lifetime cap across all engagements under this mandate." }
+      }
+    },
     "valid_from": { "type": "string", "format": "date-time" },
     "valid_until": { "type": "string", "format": "date-time" },
+    "revocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "How this mandate can be revoked before valid_until (CDP-M.9). When status_url is present, the agent MUST check it before sensitive actions.",
+      "required": ["status_url"],
+      "properties": {
+        "status_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Endpoint returning the live status of this mandate, e.g. {\"mandate_id\":\"...\",\"status\":\"active|revoked\",\"checked_at\":\"...\"}."
+        },
+        "max_cache_seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "How long a platform MAY cache a status response. Omit or 0 to require a fresh check every time."
+        }
+      }
+    },
     "signature": {
       "type": "object",
       "description": "Detached signature over the canonical JSON of this mandate (without this field). SHOULD be present; platforms SHOULD verify (CDP-M.4).",

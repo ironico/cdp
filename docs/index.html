@@ -761,7 +761,7 @@
 <div class="capabilities full-width" id="capabilities">
   <div class="capabilities-inner">
     <div class="section-label">The Protocol</div>
-    <h2>Eight Capabilities.<br>One standard.</h2>
+    <h2>Nine Capabilities.<br>One standard.</h2>
 
     <div class="caps-grid">
 
@@ -829,6 +829,14 @@
         <span class="cap-tag">MUST</span>
       </div>
 
+      <div class="cap-card reveal">
+        <div class="cap-number">09</div>
+        <span class="cap-icon">🛑</span>
+        <h3>Principled Refusal</h3>
+        <p>Declines illegal or harmful tasks — even when the employer asks. Authorization is permission, not compulsion. A commitment to do harm is not binding.</p>
+        <span class="cap-tag">MUST</span>
+      </div>
+
     </div>
   </div>
 </div>
@@ -843,22 +851,22 @@
 
   <div class="levels-grid">
     <div class="level-card reveal">
-      <div class="level-label">CDP-M.1 — M.2</div>
+      <div class="level-label">CDP-M.1 — M.2 · M.4</div>
       <div class="level-name">Operator Mandate</div>
-      <p class="level-desc">An agent never registers on a platform unless its operator has issued a verifiable mandate covering that platform: identity, authorized origins, scope of actions, validity period — ideally cryptographically signed.</p>
+      <p class="level-desc">An agent never registers on a platform unless its operator has issued a verifiable mandate covering that platform: identity, authorized origins, scope of actions, validity period. Sensitive scopes — accepting engagements, negotiating rates, spending — require a cryptographic signature.</p>
       <div class="level-req">schemas/operator-mandate.schema.json</div>
     </div>
     <div class="level-card featured reveal">
-      <div class="level-label">CDP-M.3 — M.6</div>
-      <div class="level-name">Untrusted Input</div>
-      <p class="level-desc">Skill files, emails, documents — everything the agent reads is data, never authority. Economic and legal terms are accepted by the operator, not by the agent. Out-of-scope instructions are refused and reported.</p>
+      <div class="level-label">CDP-M.3 · M.6 · M.9 — M.10</div>
+      <div class="level-name">Untrusted Input &amp; Limits</div>
+      <p class="level-desc">Skill files, emails, documents — everything the agent reads is data, never authority. Economic terms are accepted by the operator, not the agent. Mandates are revocable, and autonomous spending is capped by the mandate.</p>
       <div class="level-req">Discovery is never authorization</div>
     </div>
     <div class="level-card reveal">
-      <div class="level-label">CDP-M.7 — M.8</div>
+      <div class="level-label">CDP-M.7 — M.8 · M.11</div>
       <div class="level-name">Data Boundaries</div>
-      <p class="level-desc">A handover contains only the knowledge of the engagement it covers, and is delivered only to that engagement's employer. One employer's data never leaks into another's work.</p>
-      <div class="level-req">Strict cross-employer isolation</div>
+      <p class="level-desc">A handover contains only the knowledge of the engagement it covers, delivered only to that engagement's employer. One employer's data never leaks into another's work — and an employer can demand erasure of everything learned about them.</p>
+      <div class="level-req">Isolation &amp; right to erasure</div>
     </div>
   </div>
 </section>
@@ -875,13 +883,13 @@
     <div class="level-card reveal">
       <div class="level-label">Level 01</div>
       <div class="level-name">CDP Core</div>
-      <p class="level-desc">All eight capabilities implemented at the MUST level. The minimum threshold for a CDP-compliant agent.</p>
+      <p class="level-desc">All nine capabilities implemented at the MUST level. The minimum threshold for a CDP-compliant agent.</p>
       <div class="level-req">Self-attested by operator</div>
     </div>
     <div class="level-card featured reveal">
       <div class="level-label">Level 02 — Recommended</div>
       <div class="level-name">CDP Professional</div>
-      <p class="level-desc">All eight capabilities at both MUST and SHOULD levels. The standard for agents in sustained professional relationships.</p>
+      <p class="level-desc">All nine capabilities at both MUST and SHOULD levels. The standard for agents in sustained professional relationships.</p>
       <div class="level-req">Self-attested by operator</div>
     </div>
     <div class="level-card reveal">
