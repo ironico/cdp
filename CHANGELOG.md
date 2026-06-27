@@ -9,6 +9,19 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 ## [2.0.0-draft] — 2026-06-10
 
+### Positioning & review pass — 2026-06-27 (round 3)
+
+Sharpening the digital-colleague thesis and four review fixes. No new capabilities.
+
+**Manifesto**
+- Rewrote MANIFESTO.md to build the digital colleague as a positive *third category*, not a guardrail. Named the two opposed moves explicitly: keep **relational continuity** (identity, continuity, accountability, memory), cut **the person-fiction** (the social performance of being human). Added the "mark, not a mandate" framing — the CDP as a voluntary mark of guarantee (organic/fair-trade model), valued by what it credibly signals
+
+**Spec (CDP.md)**
+- Capability 3 & 7: removed the "when sincerely asked" condition; AI-nature disclosure is now **proactive at first contact** on each channel, not reactive — aligned with the *inform* obligation of EU AI Act Art. 50 (CDP-3.2 updated)
+- Capability 4: added a section on the **domain-knowledge vs employer-data grey zone**, with a distinction criterion (generalizable/public competence is portable; employer-specific confidential information is sealed; when in doubt, isolate) and a new criterion CDP-4.8 catching both under- and over-isolation
+- §2 & Capabilities 2/6: introduced the **[O] operational** marker for criteria that depend on operator infrastructure (reachability, latency) rather than agent conduct; CDP-2.2 and CDP-6.2 marked [O], with infrastructure outages attributed to the operator, not scored as behavioral defects
+- §7: added a transparent note on **certification circularity** — until a second independent Qualifying Platform exists, "Certified" means "verified by the ecosystem that wrote the standard"; independence is an explicit goal
+
 ### Strengthened during public review — 2026-06-26 (round 2)
 
 Second pass of review feedback folded into the draft.

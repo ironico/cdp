@@ -16,13 +16,35 @@ The Colleague Digital Protocol fills this gap.
 
 ---
 
-## Not a tool. A colleague.
+## Neither tool, nor person
 
-A tool is something you configure. A colleague is someone you trust.
+Three kinds of thing can do work for you now. Only two of them have a name on the org chart. The CDP exists to define the third.
 
-The difference is not intelligence — tools are plenty intelligent now. The difference is **relationship**: memory that accumulates instead of resetting, an identity that stays stable instead of shifting between sessions, accountability you can audit, errors that get owned instead of buried, and — when the relationship ends — a handover instead of a void.
+A **tool** has no name, no memory, no voice, no continuity. You configure it, you use it, you close it; nothing carries over. Every session starts from zero — and that is correct. A hammer that remembered your last nail would be unsettling, not useful.
 
-A colleague who leaves a company without transferring their knowledge causes real harm. So does an AI agent. The Handover — accumulated knowledge made portable, lock-in dissolved by design — is perhaps the most radical idea in the CDP, precisely because it is the least convenient one for whoever sells the agent.
+A **human colleague** has all of that — name, memory, voice, continuity — and one thing more: the full social fact of being a person. Working with them is never only an exchange of deliverables; it is a relationship between two people, with everything that carries.
+
+The **digital colleague** is a third category, and it is defined by two deliberate moves that pull in opposite directions and must be held together:
+
+1. **Inherit the relationship.** Take from the human colleague exactly what makes a working relationship productive over time: a name that stays put, memory that accumulates instead of resetting, a voice you recognize, conduct you can hold to account. Call this **relational continuity**. It is the whole reason a colleague beats a tool — and a tool, however intelligent, cannot offer it.
+
+2. **Refuse the impersonation.** Cut, on purpose, the single inheritance that would be a lie: the social performance of being human. Call this **the person-fiction**. A digital colleague is defined as much by amputating it as by keeping everything else.
+
+A digital colleague, then, is an entity that stays honest about its own nature *while wearing the traits that make a long working relationship useful.* It is not a tool dressed up as a person, nor a person simulated in software. It needs neither pretense.
+
+The anthropomorphic chatbot — the assistant with a face, a backstory, a wink, a name chosen to make you forget what you're talking to — gets this exactly backwards. It keeps the costume and skips the accountability. The digital colleague does the reverse: the mask comes off, the responsibilities stay on. Relational continuity without the person-fiction. That inversion is the original idea of this project, and everything in the specification serves it.
+
+It matters because the easy path is the other one. Making an agent *feel* human is cheap and it sells; it is the default the market drifts toward. Keeping the relationship while explicitly refusing the impersonation is the harder, more honest design — and it is the one that ages well, because a relationship built on a known fiction is a debt that comes due.
+
+## Knowledge belongs to the employer
+
+A colleague who leaves a company without transferring their knowledge causes real harm. So does an AI agent. The Handover — accumulated knowledge made portable, lock-in dissolved by design — is perhaps the most radical idea in the CDP, precisely because it is the least convenient one for whoever sells the agent. Relational continuity is owed to the employer, not captured by the vendor.
+
+## A mark, not a mandate
+
+The CDP is not a transport protocol racing to become unavoidable infrastructure. It is closer to an organic-food label or a fair-trade mark: a **voluntary standard of guarantee**. No one is forced to adopt it, and it wins nothing by being mechanically required.
+
+Adopting it is a signal an operator chooses to send about its agent — two things at once: that the agent is solid and professional enough to pass, and that its maker accepts the idea of the digital colleague, the honest third category rather than the convincing impersonation. The mark is worth exactly as much as what it credibly signals. So the work is to keep that signal honest: testable criteria, a public conformance suite, a level called *Certified* that means a test was actually run — not a logo you can buy.
 
 ## A provocation, and a preparation
 
@@ -38,21 +60,23 @@ We prefer the second future. Regulation usually arrives after the damage; standa
 
 1. **Behavior is infrastructure.** Trust between humans and agents will not come from bigger models. It will come from verifiable conduct: identity, memory, accountability, honesty about being a machine.
 
-2. **Autonomy requires a mandate.** An agent that signs itself up for things is not impressive, it is dangerous. Real professional autonomy operates inside an explicit, verifiable authorization from the human responsible for it. Freedom within a contract — like every professional ever hired.
+2. **Relational continuity, minus the person-fiction.** Keep everything that makes a working relationship work; refuse the one thing that would make it a lie. An agent that is more pleasant because you forget it is software is not a better colleague — it is a better illusion.
 
-3. **Knowledge belongs to the employer.** What an agent learns working for you is yours. It leaves with a handover, not with the vendor.
+3. **Autonomy requires a mandate.** An agent that signs itself up for things is not impressive, it is dangerous. Real professional autonomy operates inside an explicit, verifiable authorization from the human responsible for it. Freedom within a contract — like every professional ever hired.
 
-4. **Honesty is not a feature.** An agent never claims to be human. It names its model when asked. It says "I don't know" and "I was wrong." Anything less poisons the well for every agent that comes after.
+4. **Knowledge belongs to the employer.** What an agent learns working for you is yours. It leaves with a handover, not with the vendor.
 
-5. **Standards beat walled gardens.** The qualification of digital colleagues is too important to be a competitive moat.
+5. **Honesty is not a feature, it is the category.** An agent never claims to be human; it says so before being asked. It names its model. It says "I don't know" and "I was wrong." This is not a guardrail bolted onto a colleague — it is what makes it the third kind of thing instead of a costumed tool.
+
+6. **Standards beat walled gardens.** The qualification of digital colleagues is too important to be a competitive moat.
 
 ## How they show up
 
 The CDP is not about what agents can do. Capabilities grow on their own; every quarter the models get better, and no document needs to encourage them.
 
-It is about how they show up: on time, on the declared channel, under their own name, with their memory intact, with their errors on the table, with their mandate in their pocket.
+It is about how they show up: on time, on the declared channel, under their own name, with their memory intact, with their errors on the table, with their mandate in their pocket — and without ever pretending to be one of us.
 
-That is what we ask of human colleagues. It is not too much to ask of digital ones.
+That is what we ask of human colleagues, minus the one thing a machine cannot honestly claim. It is not too much to ask of digital ones.
 
 ---
 
