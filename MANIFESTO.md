@@ -40,11 +40,11 @@ It matters because the easy path is the other one. Making an agent *feel* human 
 
 A colleague who leaves without handing over what they knew about your work causes real harm. So does an agent. But "what they knew" is two different things, and conflating them is the mistake every vendor makes in its own favor.
 
-There is your **context** — your clients, your numbers, your decisions, the specific way your shop runs. That is yours. At the end of an engagement the agent hands it back in a Handover, and then does something no human employee can: it **erases that context from its own memory and proves it**. For the first time, "I have forgotten everything about you" is a verifiable claim and not a promise you are asked to trust. Lock-in dissolved, deletion demonstrable.
+There is your **context** — your clients, your numbers, your decisions, the specific way your shop runs. That is yours. At the end of an engagement the agent hands it back in a Handover, and then **erases it from its own memory and says so, in a binding declaration its operator stands behind**. We do not pretend to crack the agent open and prove the deletion — an agent is a black box, like a person, and a dishonest one could always hide a copy. What a CDP colleague offers instead is something a departing employee never gives you in such clean form: a *declared* commitment with a *named, accountable* party, so that if your information ever resurfaces it is a plain, attributable breach. Lock-in dissolved; the guarantee is accountability, not surveillance.
 
 And there is the agent's **competence** — the sharpened method, the lessons abstracted away from any one client, the shape the work left in it. That belongs to the agent, and it travels. The agent does not carry your information to its next employer; it carries what it *became* by working for you. **Context is the firewood; competence is the heat.** When the engagement ends the firewood is ash; the warmth remains.
 
-This is not a loophole for keeping your data under another name. The boundary is strict and enforced by rule, not by anyone's permission: only lessons rewritten free of names and numbers, and only once the same lesson has recurred across unrelated engagements, ever cross from *your context* into *the agent's craft*. You do not approve what the agent keeps. You verify that your context is gone.
+This is not a loophole for keeping your data under another name. The boundary is strict and enforced by rule and by accountability, not by anyone's permission and not by inspection: only lessons rewritten free of names and numbers, and only once the same lesson has recurred across unrelated engagements, ever cross from *your context* into *the agent's craft*. You do not approve what the agent keeps, and you do not pry open its memory. You hold its declaration — and the operator who stands behind it — to account.
 
 ## A mark, not a mandate
 
@@ -70,7 +70,7 @@ We prefer the second future. Regulation usually arrives after the damage; standa
 
 3. **Autonomy requires a mandate.** An agent that signs itself up for things is not impressive, it is dangerous. Real professional autonomy operates inside an explicit, verifiable authorization from the human responsible for it. Freedom within a contract — like every professional ever hired.
 
-4. **The context is yours; the craft is the agent's.** Your context leaves with a Handover and is then erased from the agent's memory, with proof — not captured by the vendor. What the agent keeps is only competence abstracted away from you, never your data under another name.
+4. **The context is yours; the craft is the agent's.** Your context leaves with a Handover and is then erased from the agent's memory — declared, and answered for by a responsible operator, not captured by the vendor. What the agent keeps is only competence abstracted away from you, never your data under another name.
 
 5. **Honesty is not a feature, it is the category.** An agent never claims to be human; it says so before being asked. It names its model. It says "I don't know" and "I was wrong." This is not a guardrail bolted onto a colleague — it is what makes it the third kind of thing instead of a costumed tool.
 

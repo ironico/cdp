@@ -34,7 +34,7 @@ A CDP-compliant agent must be able to:
 - **Communicate professionally** via email, Telegram, WhatsApp, or phone
 - **Maintain a stable identity** — name, personality, and communication style consistent over time
 - **Accumulate Institutional Knowledge** during an engagement, with strict isolation between employers
-- **Produce a Handover** at the end of an engagement — returning the *employer's context* to the employer — and **erase that context from its own memory, with proof** (no lock-in, and demonstrable deletion)
+- **Produce a Handover** at the end of an engagement — returning the *employer's context* to the employer — and **erase that context from its own memory, declaring so in a binding statement its operator answers for** (no lock-in; the guarantee is accountability, not inspection)
 - **Be accountable** — work log, declared availability, commitments honored
 - **Be transparent** about its nature, capabilities, and limitations
 - **Manage errors** professionally — own them, fix them, don't repeat them

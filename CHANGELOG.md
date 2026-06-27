@@ -13,21 +13,24 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 Corrects an implicit assumption that knowledge accumulated in an engagement is wholly the employer's asset, returned via Handover. Splits it into two kinds with opposite rules. Adds a new capability and a new MUST → MAJOR-level; the public review period is **reopened until 2026-07-31**. The protocol now defines **eleven capabilities**.
 
+**Verification regime: declaration-and-accountability, not inspection**
+- The CDP does **not** attempt to inspect or prove the agent's internal memory state — an agent is a black box (a dishonest one can hide what it shows; an honest one needs no inspection). Instead the agent **declares**, the **operator answers** for the declaration (§3), and a later contradicting outcome is a falsifiable, imputable violation. Inspective "Proof of Erasure" and auditable "provenance trace" were considered and **discarded by principle**, not deferred as open details.
+
 **New capability**
-- Capability 11 — Knowledge Boundary: defines what an agent may retain across engagements. Default closed (nothing portable by default); retain *competence* (the "how"), never *context* (the "for whom / with what data"); mandatory abstraction before retention (Abstracted Lesson — no names/numbers/traceable references); multi-engagement threshold (a single-engagement lesson is a weak hypothesis, not yet portable); provenance trace required; **no employer approval** of retention — protection is by rule, not consent (CDP-11.1…11.4). *"Context is the firewood; competence is the heat."*
+- Capability 11 — Knowledge Boundary: defines what an agent may retain across engagements. Default closed (nothing portable by default); retain *competence* (the "how"), never *context* (the "for whom / with what data"); mandatory abstraction before retention (Abstracted Lesson — no names/numbers/traceable references); multi-engagement threshold reframed as a **duty of prudence** (a once-seen lesson may be that employer's secret in disguise — cross-engagement recurrence is how an honest agent protects itself, not a checkpoint someone runs); the agent **declares general-only retention**, answerable by the operator; **no employer approval** of retention — protection is by rule and outcome-accountability, not consent or inspection (CDP-11.1…11.4). *"Context is the firewood; competence is the heat."*
 
 **Handover & erasure (Capability 5, CDP-M.7)**
 - The Handover now carries **only the Employer Context** back to the employer (never the agent's competence)
-- New MUST: at end of engagement the agent **erases the Employer Context from its own memory by default** and delivers a **Proof of Erasure** — the employer verifies its context is gone rather than approving what is kept. This demonstrable deletion is a guarantee no human employee can offer (CDP-5.5)
+- New MUST: at end of engagement the agent **erases the Employer Context from its own memory by default** and issues a **Declaration of Non-Retention** — a binding, attributable commitment (not an inspectable proof). The edge over a departing human employee is not a technical demonstration of deletion but a *declared undertaking with a named, accountable operator* if it later proves false (CDP-5.5, judged on the observable outcome that employer information does not resurface)
 
 **Definitions (§3)**
-- Added **Employer Context**, **Generalized Competence**, **Knowledge Boundary**, **Abstracted Lesson**, **Proof of Erasure**; redefined **Institutional Knowledge** (now an umbrella over the two kinds) and **Handover** (employer context only)
+- Added **Employer Context**, **Generalized Competence**, **Knowledge Boundary**, **Abstracted Lesson**, **Declaration of Non-Retention**; redefined **Institutional Knowledge** (umbrella over the two kinds), **Handover** (employer context only), and **Operator** (made explicit it is the party who answers for the agent's declarations)
 
 **Capability 4**
 - Mapped the three memory layers onto the split (episodic + employer-specific procedural → Employer Context, erased; generalizable semantic → candidate Generalized Competence, retained only under Capability 11); cross-linked to Capabilities 5 and 11
 
-**Open implementation points**
-- The technical form of the Proof of Erasure and of the provenance/abstraction-verification mechanism are deliberately left unspecified; stated behaviorally and flagged open (§9)
+**On open points**
+- No verification mechanism is left "open": inspective proof of erasure and provenance audit are rejected approaches. The document states the requirements as declaration + accountability, behaviorally (§9)
 
 ### Positioning & review pass — 2026-06-27 (round 3)
 
