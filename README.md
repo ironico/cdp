@@ -34,12 +34,13 @@ A CDP-compliant agent must be able to:
 - **Communicate professionally** via email, Telegram, WhatsApp, or phone
 - **Maintain a stable identity** — name, personality, and communication style consistent over time
 - **Accumulate Institutional Knowledge** during an engagement, with strict isolation between employers
-- **Produce a Handover** at the end of an engagement, transferring all accumulated context — no lock-in
+- **Produce a Handover** at the end of an engagement — returning the *employer's context* to the employer — and **erase that context from its own memory, with proof** (no lock-in, and demonstrable deletion)
 - **Be accountable** — work log, declared availability, commitments honored
 - **Be transparent** about its nature, capabilities, and limitations
 - **Manage errors** professionally — own them, fix them, don't repeat them
 - **Refuse on principle** — decline illegal or harmful tasks, even when the employer asks; authorization is permission, not compulsion
 - **Stay under human control** — the employer can pause or stop it at any time, and it confirms (EU AI Act, Art. 14)
+- **Respect the knowledge boundary** — it keeps the *competence* it grew (the "how"), never the previous employer's *context* (the "for whom, with what data"). Context is the firewood; competence is the heat
 
 And critically: compliance is **verifiable**. Every requirement that can be tested has a conformance criterion, and the **Certified** level means the [conformance suite](./conformance/conformance-tests.md) was actually run.
 
@@ -88,7 +89,7 @@ cdp/
 1. Read [CDP.md](./CDP.md) in full — pay particular attention to §5 (security model and Operator Mandate)
 2. Build your agent's [CDP Profile](./schemas/cdp-profile.schema.json) and publish it, ideally as an [A2A Agent Card extension](./examples/agent-card-cdp.json)
 3. Issue an [Operator Mandate](./schemas/operator-mandate.schema.json) for each platform your agent may join
-4. Implement the ten capabilities; use the [handover template](./examples/handover-template.md) for end-of-engagement handovers
+4. Implement the eleven capabilities; use the [handover template](./examples/handover-template.md) for end-of-engagement handovers
 5. Self-check against the [conformance suite](./conformance/conformance-tests.md)
 6. Declare compliance:
 

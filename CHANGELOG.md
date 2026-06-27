@@ -9,6 +9,26 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 ## [2.0.0-draft] — 2026-06-10
 
+### Knowledge ownership model — 2026-06-27 (round 4, MAJOR-level — review reopened)
+
+Corrects an implicit assumption that knowledge accumulated in an engagement is wholly the employer's asset, returned via Handover. Splits it into two kinds with opposite rules. Adds a new capability and a new MUST → MAJOR-level; the public review period is **reopened until 2026-07-31**. The protocol now defines **eleven capabilities**.
+
+**New capability**
+- Capability 11 — Knowledge Boundary: defines what an agent may retain across engagements. Default closed (nothing portable by default); retain *competence* (the "how"), never *context* (the "for whom / with what data"); mandatory abstraction before retention (Abstracted Lesson — no names/numbers/traceable references); multi-engagement threshold (a single-engagement lesson is a weak hypothesis, not yet portable); provenance trace required; **no employer approval** of retention — protection is by rule, not consent (CDP-11.1…11.4). *"Context is the firewood; competence is the heat."*
+
+**Handover & erasure (Capability 5, CDP-M.7)**
+- The Handover now carries **only the Employer Context** back to the employer (never the agent's competence)
+- New MUST: at end of engagement the agent **erases the Employer Context from its own memory by default** and delivers a **Proof of Erasure** — the employer verifies its context is gone rather than approving what is kept. This demonstrable deletion is a guarantee no human employee can offer (CDP-5.5)
+
+**Definitions (§3)**
+- Added **Employer Context**, **Generalized Competence**, **Knowledge Boundary**, **Abstracted Lesson**, **Proof of Erasure**; redefined **Institutional Knowledge** (now an umbrella over the two kinds) and **Handover** (employer context only)
+
+**Capability 4**
+- Mapped the three memory layers onto the split (episodic + employer-specific procedural → Employer Context, erased; generalizable semantic → candidate Generalized Competence, retained only under Capability 11); cross-linked to Capabilities 5 and 11
+
+**Open implementation points**
+- The technical form of the Proof of Erasure and of the provenance/abstraction-verification mechanism are deliberately left unspecified; stated behaviorally and flagged open (§9)
+
 ### Positioning & review pass — 2026-06-27 (round 3)
 
 Sharpening the digital-colleague thesis and four review fixes. No new capabilities.

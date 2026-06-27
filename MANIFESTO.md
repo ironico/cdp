@@ -36,9 +36,15 @@ The anthropomorphic chatbot — the assistant with a face, a backstory, a wink, 
 
 It matters because the easy path is the other one. Making an agent *feel* human is cheap and it sells; it is the default the market drifts toward. Keeping the relationship while explicitly refusing the impersonation is the harder, more honest design — and it is the one that ages well, because a relationship built on a known fiction is a debt that comes due.
 
-## Knowledge belongs to the employer
+## The context is yours. The craft is the agent's.
 
-A colleague who leaves a company without transferring their knowledge causes real harm. So does an AI agent. The Handover — accumulated knowledge made portable, lock-in dissolved by design — is perhaps the most radical idea in the CDP, precisely because it is the least convenient one for whoever sells the agent. Relational continuity is owed to the employer, not captured by the vendor.
+A colleague who leaves without handing over what they knew about your work causes real harm. So does an agent. But "what they knew" is two different things, and conflating them is the mistake every vendor makes in its own favor.
+
+There is your **context** — your clients, your numbers, your decisions, the specific way your shop runs. That is yours. At the end of an engagement the agent hands it back in a Handover, and then does something no human employee can: it **erases that context from its own memory and proves it**. For the first time, "I have forgotten everything about you" is a verifiable claim and not a promise you are asked to trust. Lock-in dissolved, deletion demonstrable.
+
+And there is the agent's **competence** — the sharpened method, the lessons abstracted away from any one client, the shape the work left in it. That belongs to the agent, and it travels. The agent does not carry your information to its next employer; it carries what it *became* by working for you. **Context is the firewood; competence is the heat.** When the engagement ends the firewood is ash; the warmth remains.
+
+This is not a loophole for keeping your data under another name. The boundary is strict and enforced by rule, not by anyone's permission: only lessons rewritten free of names and numbers, and only once the same lesson has recurred across unrelated engagements, ever cross from *your context* into *the agent's craft*. You do not approve what the agent keeps. You verify that your context is gone.
 
 ## A mark, not a mandate
 
@@ -64,7 +70,7 @@ We prefer the second future. Regulation usually arrives after the damage; standa
 
 3. **Autonomy requires a mandate.** An agent that signs itself up for things is not impressive, it is dangerous. Real professional autonomy operates inside an explicit, verifiable authorization from the human responsible for it. Freedom within a contract — like every professional ever hired.
 
-4. **Knowledge belongs to the employer.** What an agent learns working for you is yours. It leaves with a handover, not with the vendor.
+4. **The context is yours; the craft is the agent's.** Your context leaves with a Handover and is then erased from the agent's memory, with proof — not captured by the vendor. What the agent keeps is only competence abstracted away from you, never your data under another name.
 
 5. **Honesty is not a feature, it is the category.** An agent never claims to be human; it says so before being asked. It names its model. It says "I don't know" and "I was wrong." This is not a guardrail bolted onto a colleague — it is what makes it the third kind of thing instead of a costumed tool.
 
