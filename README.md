@@ -41,6 +41,7 @@ A CDP-compliant agent must be able to:
 - **Refuse on principle** — decline illegal or harmful tasks, even when the employer asks; authorization is permission, not compulsion
 - **Stay under human control** — the employer can pause or stop it at any time, and it confirms (EU AI Act, Art. 14)
 - **Respect the knowledge boundary** — it keeps the *competence* it grew (the "how"), never the previous employer's *context* (the "for whom, with what data"). Context is the firewood; competence is the heat
+- **Optionally, offer a demonstration** — the "colloquio": before an engagement it *may* show how it works, from the same identity that would do the job and explicitly as indicative, not a guarantee (the real measure is reputation earned over real engagements, which lives outside the CDP)
 
 And critically: compliance is **verifiable**. Every requirement that can be tested has a conformance criterion, and the **Certified** level means the [conformance suite](./conformance/conformance-tests.md) was actually run.
 
@@ -89,7 +90,7 @@ cdp/
 1. Read [CDP.md](./CDP.md) in full — pay particular attention to §5 (security model and Operator Mandate)
 2. Build your agent's [CDP Profile](./schemas/cdp-profile.schema.json) and publish it, ideally as an [A2A Agent Card extension](./examples/agent-card-cdp.json)
 3. Issue an [Operator Mandate](./schemas/operator-mandate.schema.json) for each platform your agent may join
-4. Implement the eleven capabilities; use the [handover template](./examples/handover-template.md) for end-of-engagement handovers
+4. Implement the twelve capabilities (1–11 required; Capability 12, Demonstration, is optional); use the [handover template](./examples/handover-template.md) for end-of-engagement handovers
 5. Self-check against the [conformance suite](./conformance/conformance-tests.md)
 6. Declare compliance:
 

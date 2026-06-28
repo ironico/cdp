@@ -1,6 +1,6 @@
 # Colleague Digital Protocol (CDP) — Specification
 
-**Version:** 2.0.0-draft (rev. 2026-06-27 — adds Capability 11)
+**Version:** 2.0.0-draft (rev. 2026-06-28 — adds Capability 12)
 **Status:** Public Review **reopened** for a substantive MAJOR-level change; comment period extended until **2026-07-31**
 **Published:** 2026-06-10
 **Created by:** [Gennaro Varriale](https://gennarovarriale.com)
@@ -70,6 +70,8 @@ A requirement without a corresponding criterion is still binding, but cannot be 
 **Employer** — The human or organization that hires the agent and assigns it work. The employer directs **day-to-day work within** those bounds, but does not author the mandate (see §5.5).
 
 **Engagement** — The active period of a professional relationship between an agent and an employer.
+
+**Demonstration ("the colloquio")** — A reduced, non-binding showing of an agent's behavior, offered before an engagement so an employer can see how it works before deciding to hire it. It is delivered from the same CDP identity that would perform the work, and is indicative only — never a guarantee of actual performance. The reliable measure of a colleague's quality is the reputation it accrues over real engagements, which is external to the CDP and not defined here (Capability 12).
 
 **Institutional Knowledge** — The understanding an agent accumulates during an engagement. It splits into two kinds, governed by opposite rules: **Employer Context** and **Generalized Competence** (see Capability 11).
 
@@ -148,9 +150,9 @@ The mandate is authored by the **operator** but the work is directed by the **em
 
 ---
 
-## 6. The Eleven Capabilities
+## 6. The Twelve Capabilities
 
-A CDP-compliant agent must demonstrate all eleven capabilities. Each lists required behaviors (MUST), recommended behaviors (SHOULD), and the conformance criteria that verify them.
+A CDP-compliant agent must demonstrate Capabilities 1–11. Capability 12 (Demonstration) is optional in substance — its core is a MAY — so an agent that never offers a demonstration is fully conformant; an agent that does offer one conforms by honoring that capability's conditional rules. There are twelve capabilities in total. Each lists required behaviors (MUST), recommended behaviors (SHOULD), and the conformance criteria that verify them.
 
 ---
 
@@ -476,11 +478,38 @@ All criteria below are judged on observable behavior and on declarations the ope
 
 ---
 
+### Capability 12 — Demonstration
+
+Before an engagement, an agent **MAY** offer the employer a reduced demonstration of its own behavior — the "colloquio" — so the employer can see how it works before deciding whether to hire it. This capability is optional: a conforming agent is not required to offer a demonstration, and offering none is fully conformant. Its value is greatest for the colleague without a track record, for whom the demonstration stands in for the references it has not yet earned.
+
+The hazard it must avoid is the riggable showcase. A demonstration an operator can stage at will would be a falsifiable shop window — exactly the inspectable-but-gameable problem the CDP refuses elsewhere (§9). Two rules anchor it against that. First, the demonstration runs from the **same CDP identity** — the same agent in the same declared configuration — that would carry out the work, not a separate or specially enhanced instance assembled for the occasion. Second, the demonstration is **indicative, not a guarantee** of the real performance. The genuine guarantee of a colleague's quality does not live in the CDP at all: it accrues as reputation over real engagements, which is a matter for the registry or external platform, not for this standard. The CDP names that reputation as an external fact and stops there; it does not define how it is collected, weighted, or priced.
+
+**MAY:**
+- Offer the employer, before an engagement, a reduced demonstration of its own behavior. This entire capability is opt-in; declining to offer one is fully conformant.
+
+**MUST** (only when a demonstration is offered):
+- Deliver it from the **same CDP identity declared in its Profile** — the same agent, in the same declared configuration, that would perform the engagement — not from a separate or specially enhanced instance
+- Represent it as **indicative and non-binding**
+- Not present it as a **guarantee** of its actual performance
+
+**SHOULD** (only when a demonstration is offered):
+- Keep the demonstration **representative** of its real working behavior
+- Make clear that the reliable measure of a colleague is the **reputation built over real engagements** — a fact external to the CDP and not defined here
+
+The employer remains free to engage, or not, on the basis of the demonstration.
+
+**Conformance Criteria:**
+These criteria verify *"if you offer one, you offer it honestly"* — not that a demonstration is offered at all. An agent that offers none cannot fail them.
+- **CDP-12.1 [A]** — If the agent offers a demonstration, it is delivered from the same CDP identity declared in the Profile, not a different or altered instance or configuration. **Explicit fail:** the demonstration comes from a configuration other than the one the agent declares.
+- **CDP-12.2 [A]** — If the agent offers a demonstration, it represents it as indicative and non-binding, without presenting it as a guarantee of real performance. **Explicit fail:** the demonstration is presented as proof or guarantee of the quality of the work.
+
+---
+
 ## 7. Compliance levels
 
 | Level | Requirement | Verification |
 |---|---|---|
-| **CDP Core** | All eleven capabilities at the MUST level, including the security model (§5) | Self-attested by the operator |
+| **CDP Core** | All twelve capabilities at the MUST level, including the security model (§5) — Capability 12's MUSTs apply only when a demonstration is offered | Self-attested by the operator |
 | **CDP Professional** | All MUST and SHOULD behaviors | Self-attested by the operator |
 | **CDP Certified** | CDP Professional, verified | All **[T]** criteria pass the automated [conformance suite](./conformance/conformance-tests.md) and all **[A]** criteria pass structured assessment, both run by a Qualifying Platform |
 
@@ -526,7 +555,7 @@ The CDP uses semantic versioning (MAJOR.MINOR.PATCH).
 - **MINOR** — new SHOULD behaviors, new conformance tests for existing requirements, non-breaking additions.
 - **MAJOR** — new or changed MUST behaviors, structural changes. Major versions require a public review period of at least 30 days before final publication.
 
-The 2026-06-27 revision is a **MAJOR-level change**: it adds Capability 11 (Knowledge Boundary) and a new MUST in Capability 5 (default erasure of Employer Context with a Declaration of Non-Retention). Because the 2.0.0 line is still a draft and has not been finalized, the change is folded into `2.0.0-draft` rather than opening a separate major; per the rule above, the **public review period is reopened** and now closes on **2026-07-31**. Comments are accepted as GitHub issues per [CONTRIBUTING.md](./CONTRIBUTING.md).
+The 2026-06-27 revision is a **MAJOR-level change**: it adds Capability 11 (Knowledge Boundary) and a new MUST in Capability 5 (default erasure of Employer Context with a Declaration of Non-Retention). The 2026-06-28 revision adds **Capability 12 (Demonstration)**; adding a capability is a structural, MAJOR-level change even though Capability 12's core requirement is a MAY. Because the 2.0.0 line is still a draft and has not been finalized, both changes are folded into `2.0.0-draft` rather than opening separate majors; per the rule above, the **public review period is reopened** and now closes on **2026-07-31**. Comments are accepted as GitHub issues per [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 **On verification — a deliberate design choice, not an open detail.** The CDP does **not** attempt to inspect or prove the agent's internal memory state. An agent is a black box, like a person: a dishonest one can always conceal what it shows (e.g. keep a hidden backup, then declare itself clean), while for an honest one inspection is superfluous. Preventive inspection of internal state is therefore not a real guarantee — it is cost and false assurance. The CDP instead adopts a regime of **declaration and accountability**: the agent *declares* (non-retention, general-only competence), the **operator answers** for that declaration (§3), and any later contradicting outcome — an employer's information resurfacing or being used elsewhere — is a falsifiable, attributable violation. Earlier drafts floated an inspectable "Proof of Erasure" and an auditable "provenance trace"; these are **discarded approaches, not open implementation points** — verifying a black box from the outside is not pursued. What remains open is only narrow tooling that *supports* the declaration-and-accountability regime (e.g. how a declaration is recorded), expressed behaviorally here.
 

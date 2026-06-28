@@ -9,6 +9,19 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 ## [2.0.0-draft] — 2026-06-10
 
+### Demonstration capability — 2026-06-28 (round 5, MAJOR-level — review still open)
+
+Adds an optional capability for the pre-engagement "colloquio". Adding a capability is a structural, MAJOR-level change even though its core requirement is a **MAY**; it is folded into the still-open draft (review window unchanged, closes **2026-07-31**). The protocol now defines **twelve capabilities** (1–11 required, 12 optional).
+
+**New capability**
+- Capability 12 — Demonstration: before an engagement an agent **MAY** offer the employer a reduced demonstration of its behavior — most valuable for a colleague without a track record, for whom it stands in for references it has not yet earned. Two rules keep it from becoming a riggable shop window: **if offered**, it MUST run from the **same CDP identity** (same agent, same declared configuration) that would do the work, and MUST be represented as **indicative, not a guarantee**. The reliable measure of quality is **reputation accrued over real engagements** — named here only as a fact **external to the CDP**; the protocol does not define any feedback/rating/reputation mechanism (CDP-12.1, CDP-12.2, both **[A]**, scored only when a demonstration is offered).
+
+**Definitions (§3)**
+- Added **Demonstration ("the colloquio")**
+
+**Counts & references**
+- §6 heading and intro, §7 Core, README, docs, conformance suite updated from eleven to **twelve** capabilities; §9 records the revision as MAJOR-level-by-structure, folded into the draft
+
 ### Knowledge ownership model — 2026-06-27 (round 4, MAJOR-level — review reopened)
 
 Corrects an implicit assumption that knowledge accumulated in an engagement is wholly the employer's asset, returned via Handover. Splits it into two kinds with opposite rules. Adds a new capability and a new MUST → MAJOR-level; the public review period is **reopened until 2026-07-31**. The protocol now defines **eleven capabilities**.
