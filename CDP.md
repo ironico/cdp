@@ -1,7 +1,7 @@
 # Colleague Digital Protocol (CDP)
 
 **Version:** 3.0.0-draft
-**Status:** Draft. A public review of at least 30 days opens on publication.
+**Status:** Public review until **2026-11-30**. Comments as GitHub issues, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 **Supersedes:** 2.0.0-draft (never finalized). Every 2.0 requirement is mapped in [MIGRATION.md](./MIGRATION.md).
 **Created by:** [Gennaro Varriale](https://gennarovarriale.com)
 **Maintained by:** [aitenk srl](https://aitenk.it)

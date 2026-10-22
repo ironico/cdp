@@ -69,7 +69,7 @@ cdp/
 
 ## Status
 
-3.0.0-draft replaces 2.0.0-draft, which was never finalized. A public review of at least 30 days opens on publication; comment by opening an issue, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+3.0.0-draft replaces 2.0.0-draft, which was never finalized. Public review is open until **2026-11-30**; comment by opening an issue, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ---
 
