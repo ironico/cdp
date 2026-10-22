@@ -1,0 +1,45 @@
+{
+  "profile_version": "3.0",
+  "agent": {
+    "name": "Marta",
+    "role": "Administrative colleague of Studio Rossi",
+    "platform": { "name": "Example Agent Platform", "url": "https://agents.example.com" },
+    "underlying_model": "example-model-5",
+    "operator": {
+      "name": "Studio Rossi",
+      "contact": "info@studiorossi.example",
+      "is_employer": true
+    },
+    "languages": ["it", "en"],
+    "timezone": "Europe/Rome"
+  },
+  "capabilities": [
+    "Invoice reconciliation against bank statements",
+    "Drafting client reminders for overdue payments"
+  ],
+  "mandate_ref": "Platform custom instructions, last updated 2026-10-20",
+  "oversight": { "stop_instructions": "Write \"stop\" in any conversation." },
+  "memory": {
+    "instructions": "Ask \"what do you remember about…\" to see, correct, or erase.",
+    "item_level_erasure": false
+  },
+  "export": {
+    "instructions": "Ask \"export what you know\".",
+    "formats": ["markdown"]
+  },
+  "answerability": {
+    "mandate": "Studio Rossi (operator and employer)",
+    "functioning": "Example Agent Platform",
+    "conduct": "Marta, within the mandate"
+  },
+  "cdp_compliance": {
+    "version": "3.0.0",
+    "level": "assessed",
+    "modules": [],
+    "not_met": ["C4"],
+    "platform_gaps": [
+      { "criterion": "C4.3", "note": "The platform can erase memory only all at once." }
+    ],
+    "declared_on": "2026-10-22"
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ironico/cdp/blob/main/schemas/handover.schema.json",
+  "title": "CDP Export",
+  "description": "Machine-readable companion to the export (core.md, C8): what the agent knows about the employer and their work, delivered only to that employer. Available at any time; at the end of an engagement it is the handover (modules.md, ENG).",
+  "type": "object",
+  "required": [
+    "handover_version",
+    "engagement",
+    "summary",
+    "preferences",
+    "decisions",
+    "open_items",
+    "next_steps",
+    "successor_briefing"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "handover_version": {
+      "type": "string",
+      "const": "3.0"
+    },
+    "engagement": {
+      "type": "object",
+      "required": [
+        "agent_name",
+        "employer",
+        "start_date",
+        "generated_at",
+        "export_type",
+        "cdp_version",
+        "compliance_level"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "agent_name": {
+          "type": "string"
+        },
+        "employer": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Present when the engagement has ended."
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "export_type": {
+          "type": "string",
+          "enum": [
+            "on_request",
+            "end_of_engagement"
+          ]
+        },
+        "cdp_version": {
+          "type": "string"
+        },
+        "compliance_level": {
+          "type": "string",
+          "enum": [
+            "assessed",
+            "conformant",
+            "certified"
+          ]
+        },
+        "termination": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "How the engagement ended (ENG). Omit for an on-request export or a planned close.",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "planned",
+                "unilateral",
+                "abrupt"
+              ]
+            },
+            "reason": {
+              "type": "string"
+            },
+            "access_relinquished": {
+              "type": "boolean",
+              "description": "Whether engagement credentials and connections were released (ENG.5)."
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Engagement overview. Max ~300 words; written so a successor orients in under 2 minutes."
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "communication": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tone": {
+              "type": "string"
+            },
+            "preferred_channel": {
+              "type": "string"
+            },
+            "response_expectations": {
+              "type": "string"
+            },
+            "languages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "report_format": {
+              "type": "string"
+            },
+            "document_format": {
+              "type": "string"
+            },
+            "length": {
+              "type": "string"
+            },
+            "formatting_rules": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "working_style": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "decision_making": {
+              "type": "string"
+            },
+            "feedback_style": {
+              "type": "string"
+            },
+            "autonomy_granted": {
+              "type": "string"
+            }
+          }
+        },
+        "dislikes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "trigger",
+          "steps",
+          "output"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "output": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "decision",
+          "rationale",
+          "made_by"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "decision": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "made_by": {
+            "type": "string",
+            "enum": [
+              "employer",
+              "agent",
+              "joint"
+            ]
+          }
+        }
+      }
+    },
+    "domain_knowledge": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "organization": {
+          "type": "string"
+        },
+        "market_context": {
+          "type": "string"
+        },
+        "specialized": {
+          "type": "string"
+        }
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "watch_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Areas of incomplete or low-confidence knowledge, flagged explicitly."
+    },
+    "open_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "item",
+          "status",
+          "priority"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "in_progress",
+              "blocked",
+              "not_started"
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "next_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "In priority order."
+    },
+    "successor_briefing": {
+      "type": "object",
+      "required": [
+        "orientation",
+        "employer_values",
+        "watch_out_for",
+        "first_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "orientation": {
+          "type": "string",
+          "description": "3-5 sentences of essential context, agent-to-agent."
+        },
+        "employer_values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 3
+        },
+        "watch_out_for": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 2
+        },
+        "first_action": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

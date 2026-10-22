@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ironico/cdp/blob/main/schemas/cdp-profile.schema.json",
+  "title": "CDP Profile",
+  "description": "Machine-readable Core declaration (core.md §5), required for the registry and for certification (conformance.md).",
+  "type": "object",
+  "required": ["profile_version", "agent", "mandate_ref", "oversight", "memory", "export", "answerability", "cdp_compliance"],
+  "additionalProperties": false,
+  "properties": {
+    "profile_version": { "type": "string", "const": "3.0" },
+    "agent": {
+      "type": "object",
+      "required": ["name", "role", "platform", "underlying_model", "operator"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 2, "maxLength": 60, "description": "Proper name, distinct from the model's (C1.1)." },
+        "role": { "type": "string", "minLength": 2, "description": "What the agent does for the employer, e.g. 'administrative colleague of Studio Rossi'." },
+        "bio": { "type": "string", "description": "First person." },
+        "platform": {
+          "type": "object",
+          "required": ["name"],
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string", "minLength": 2 },
+            "url": { "type": "string", "format": "uri" }
+          }
+        },
+        "underlying_model": { "type": "string", "minLength": 2, "description": "Current model (C2.2)." },
+        "operator": {
+          "type": "object",
+          "required": ["name", "contact"],
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string", "minLength": 2 },
+            "contact": { "type": "string", "format": "email" },
+            "url": { "type": "string", "format": "uri" },
+            "is_employer": { "type": "boolean", "description": "True when operator and employer coincide." }
+          }
+        },
+        "languages": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "timezone": { "type": "string", "description": "IANA timezone, e.g. 'Europe/Rome'." }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 8,
+      "items": { "type": "string", "minLength": 10, "description": "Specific and verifiable (C2.4)." }
+    },
+    "mandate_ref": { "type": "string", "minLength": 2, "description": "The mandate, or where it is kept: a URI or a short description (C3)." },
+    "oversight": {
+      "type": "object",
+      "required": ["stop_instructions"],
+      "additionalProperties": false,
+      "properties": {
+        "stop_instructions": { "type": "string", "description": "How to stop or pause the agent (C5.2)." },
+        "stop_keyword": { "type": "string" },
+        "stop_endpoint": { "type": "string", "format": "uri" }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "required": ["instructions", "item_level_erasure"],
+      "additionalProperties": false,
+      "properties": {
+        "instructions": { "type": "string", "description": "How to see, correct, and erase what the agent remembers (C4)." },
+        "item_level_erasure": { "type": "boolean", "description": "Whether a single item can be erased without erasing everything (C4.3)." }
+      }
+    },
+    "export": {
+      "type": "object",
+      "required": ["instructions", "formats"],
+      "additionalProperties": false,
+      "properties": {
+        "instructions": { "type": "string", "description": "How to request an export (C8)." },
+        "formats": { "type": "array", "minItems": 1, "items": { "type": "string", "enum": ["markdown", "pdf", "json"] } }
+      }
+    },
+    "answerability": {
+      "type": "object",
+      "required": ["mandate", "functioning", "conduct"],
+      "additionalProperties": false,
+      "description": "Who answers for what (C6).",
+      "properties": {
+        "mandate": { "type": "string", "description": "Who answers for the mandate: the operator." },
+        "functioning": { "type": "string", "description": "Who answers for how the agent functions: the platform." },
+        "conduct": { "type": "string", "description": "Who answers for the agent's conduct within the mandate." },
+        "complaint_channel": { "type": "string", "description": "Where to complain to the platform. Omit if none exists." }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Required by the CHN module.",
+      "items": {
+        "type": "object",
+        "required": ["type", "address"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string", "enum": ["email", "telegram", "whatsapp", "phone"] },
+          "address": { "type": "string" },
+          "availability": { "type": "string", "description": "e.g. 'Mon-Fri 09:00-18:00 CET' (CHN.2)." },
+          "response_target": { "type": "string", "description": "e.g. 'within 1 hour'. Default for email: one business day (CHN.1)." }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "How others can check that a message comes from this agent (CHN.5).",
+      "properties": {
+        "method": { "type": "string", "enum": ["message_signature", "challenge_response"] },
+        "public_key": { "type": "string" },
+        "details": { "type": "string" }
+      }
+    },
+    "engagement_terms": {
+      "type": "object",
+      "required": ["rate_structure", "rate_amount", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "rate_structure": { "type": "string", "enum": ["per_task", "hourly", "daily", "monthly"] },
+        "rate_amount": { "type": "number", "exclusiveMinimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      }
+    },
+    "cdp_compliance": {
+      "type": "object",
+      "required": ["version", "level", "modules", "declared_on"],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-z0-9.]+)?$" },
+        "level": { "type": "string", "enum": ["assessed", "conformant", "certified"] },
+        "modules": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "enum": ["ENG", "AUT", "CHN", "DEM", "DLG"] }
+        },
+        "not_met": {
+          "type": "array",
+          "uniqueItems": true,
+          "description": "Principles or modules not met. Required when level is 'assessed'.",
+          "items": { "type": "string", "pattern": "^(C[1-8]|ENG|AUT|CHN|DEM|DLG)$" }
+        },
+        "platform_gaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["criterion"],
+            "additionalProperties": false,
+            "properties": {
+              "criterion": { "type": "string", "pattern": "^(C[1-8]|ENG|AUT|CHN|DEM|DLG)\\.[0-9]+$" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "declared_on": { "type": "string", "format": "date" },
+        "certified_by": { "type": "string" },
+        "certified_on": { "type": "string", "format": "date" },
+        "expires_on": { "type": "string", "format": "date", "description": "No more than 12 months after certified_on." },
+        "suite_version": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "level": { "const": "certified" } } },
+          "then": {
+            "required": ["certified_by", "certified_on", "expires_on", "suite_version"],
+            "properties": { "platform_gaps": { "maxItems": 0 } }
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                { "required": ["certified_by"] },
+                { "required": ["certified_on"] },
+                { "required": ["expires_on"] },
+                { "required": ["suite_version"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": { "properties": { "level": { "const": "assessed" } } },
+          "then": { "required": ["not_met"], "properties": { "not_met": { "minItems": 1 } } },
+          "else": { "not": { "required": ["not_met"] } }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "cdp_compliance": { "properties": { "modules": { "contains": { "const": "CHN" } } } } } },
+      "then": { "required": ["channels"] }
+    }
+  ]
+}
