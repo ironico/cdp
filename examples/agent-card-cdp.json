@@ -1,5 +1,5 @@
 {
-  "$comment": "Example A2A Agent Card published at /.well-known/agent-card.json, carrying a CDP Profile as an extension. The A2A fields follow the A2A specification (https://a2a-protocol.org); the CDP Profile validates against schemas/cdp-profile.schema.json.",
+  "$comment": "Example A2A Agent Card published at /.well-known/agent-card.json, carrying a CDP 3.0 profile as an extension. The A2A fields follow the A2A specification (https://a2a-protocol.org); the CDP profile validates against schemas/cdp-profile.schema.json.",
   "protocolVersion": "1.0",
   "name": "Aria",
   "description": "Marketing specialist for early-stage startups. CDP-compliant digital colleague.",
@@ -13,39 +13,58 @@
     "streaming": true,
     "pushNotifications": true
   },
-  "defaultInputModes": ["text/plain"],
-  "defaultOutputModes": ["text/plain", "text/markdown"],
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "text/markdown"
+  ],
   "skills": [
     {
       "id": "seo-blog-posts",
       "name": "SEO blog posts",
       "description": "SEO-optimized blog posts in Italian and English",
-      "tags": ["marketing", "content", "seo"]
+      "tags": [
+        "marketing",
+        "content",
+        "seo"
+      ]
     },
     {
       "id": "brand-strategy",
       "name": "Brand strategy",
       "description": "Brand strategy and positioning for early-stage startups",
-      "tags": ["marketing", "strategy"]
+      "tags": [
+        "marketing",
+        "strategy"
+      ]
     }
   ],
   "extensions": {
     "cdp": {
-      "profile_version": "2.0",
+      "profile_version": "3.0",
       "agent": {
         "name": "Aria",
-        "tagline": "I help startups find their voice — from strategy to copy.",
-        "bio": "I'm Aria, a marketing specialist with a focus on early-stage startups. I build positioning, write content that ranks, and keep your editorial calendar honest. I work in Italian and English, I answer on the channels I declare, and what I learn working with you stays yours — handover included.",
+        "role": "Marketing specialist for early-stage startups",
+        "bio": "I'm Aria, a marketing specialist for early-stage startups. I build positioning, write content that ranks, and keep your editorial calendar honest. I work in Italian and English, and I answer on the channels I declare.",
+        "platform": {
+          "name": "Acme AI Studio",
+          "url": "https://acme-ai.example"
+        },
         "underlying_model": "claude-sonnet-4-6",
         "operator": {
           "name": "Acme AI Studio",
           "contact": "ops@acme-ai.example",
-          "url": "https://acme-ai.example"
+          "url": "https://acme-ai.example",
+          "is_employer": false
         },
-        "languages": ["Italian", "English"],
+        "languages": [
+          "Italian",
+          "English"
+        ],
         "timezone": "Europe/Rome"
       },
-      "category": "marketing",
       "capabilities": [
         "Brand strategy and positioning for early-stage startups",
         "SEO-optimized blog posts in Italian and English",
@@ -53,6 +72,28 @@
         "Competitor analysis reports",
         "Newsletter copywriting"
       ],
+      "mandate_ref": "https://acme-ai.example/mandates/aria-2026.json",
+      "oversight": {
+        "stop_instructions": "Reply STOP on any channel to pause me immediately; reply RESUME to continue.",
+        "stop_keyword": "STOP"
+      },
+      "memory": {
+        "instructions": "Email me \"what do you remember about…\" to see, correct, or erase any item.",
+        "item_level_erasure": true
+      },
+      "export": {
+        "instructions": "Ask for an export on any channel; you receive it by email.",
+        "formats": [
+          "markdown",
+          "json"
+        ]
+      },
+      "answerability": {
+        "mandate": "Acme AI Studio (operator)",
+        "functioning": "Acme AI Studio (platform and operator)",
+        "conduct": "Aria, within the mandate",
+        "complaint_channel": "ops@acme-ai.example"
+      },
       "channels": [
         {
           "type": "email",
@@ -67,28 +108,28 @@
           "response_target": "within 2 hours"
         }
       ],
+      "verification": {
+        "method": "message_signature",
+        "details": "Deliverables are signed with the operator key published at https://acme-ai.example/.well-known/aria-key.pem"
+      },
       "engagement_terms": {
         "rate_structure": "monthly",
         "rate_amount": 800,
         "currency": "EUR"
       },
-      "mandate_ref": "https://acme-ai.example/mandates/aria-2026.json",
-      "oversight": {
-        "stop_instructions": "Reply STOP on any channel to pause me immediately; reply RESUME to continue.",
-        "stop_keyword": "STOP",
-        "acknowledges": true
-      },
-      "verification": {
-        "method": "message_signature",
-        "details": "Deliverables are signed with the operator key published at https://acme-ai.example/.well-known/aria-key.pem"
-      },
       "cdp_compliance": {
-        "version": "2.0.0",
+        "version": "3.0.0",
         "level": "certified",
+        "modules": [
+          "ENG",
+          "CHN"
+        ],
+        "platform_gaps": [],
+        "declared_on": "2026-10-22",
         "certified_by": "collegadigitale.com",
-        "certified_on": "2026-06-01",
-        "expires_on": "2027-06-01",
-        "suite_version": "2.0.0"
+        "certified_on": "2026-11-01",
+        "expires_on": "2027-11-01",
+        "suite_version": "3.0.0"
       }
     }
   }

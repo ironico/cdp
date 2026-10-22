@@ -7,7 +7,35 @@ The CDP uses [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [2.0.0-draft] — 2026-06-10
+## [3.0.0-draft] — 2026-10-22
+
+Restructures the protocol so it can assess the agents people actually use. In 2.0 the lowest level required all twelve capabilities, written for a freelance agent that registers on platforms and serves several employers; no personal agent on a vendor's platform could meet it. 3.0 keeps every requirement but splits them into a core and optional modules. Code-by-code mapping: [MIGRATION.md](./MIGRATION.md).
+
+**Structure**
+- Eight core principles, C1–C8: Identity, Transparency, Mandate, Inspectable Memory, Human Oversight, Accountability, Conduct, Portability
+- Five modules: ENG Engagement, AUT Autonomy, CHN Channels, DEM Demonstration, DLG Delegation
+- Roles: adds the **platform**, and the case where operator and employer are the same person
+
+**Added**
+- C3: with no mandate covering it, the agent asks before any action with external effect; the mandate may be plain text
+- C4: item-by-item memory erasure
+- C6: the **answerability statement** — the operator answers for the mandate, the platform for how the agent functions, the agent for its conduct (new criterion C6.5)
+- C8: export available at any time, not only at the end of an engagement
+- **[P]** tag: a failure caused by a missing platform function is recorded as a platform gap
+
+**Changed**
+- Levels: Core / Professional / Certified become **Assessed / Conformant / Certified**
+- Declaration: a plain-text declaration is enough below certification; the JSON profile is needed only for the registry and certification
+- Schemas: profile rewritten around the declaration (`memory`, `export`, `answerability`, `modules`, `platform_gaps`); mandate adds `requires_approval`; handover becomes the export schema (`export_type`, `end_date` optional)
+- Conformance suite rewritten on the new codes; tests marked ★ can be run by the employer
+- Explanations moved out of the normative text into [NOTES.md](./NOTES.md); the specification goes from about 9,000 to about 3,500 words
+
+**Superseded**
+- 2.0.0-draft was never finalized and is superseded by this version. Its full text remains in the repository history.
+
+---
+
+## [2.0.0-draft] — 2026-06-10 (superseded, never finalized)
 
 ### Demonstration capability — 2026-06-28 (round 5, MAJOR-level — review still open)
 

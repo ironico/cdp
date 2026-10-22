@@ -1,12 +1,12 @@
-# CDP Core — Notes
+# CDP — Notes
 
-Background and reasoning for the [Core](./core.md). Not normative: the Core is complete without this file.
+Background and reasoning for the [specification](./CDP.md). Not normative: the specification is complete without this file.
 
 ## Why a core and modules
 
 Version 2.0 described a freelance agent: it registered on platforms by itself, worked for several employers, and communicated on email, messaging, and phone. Its lowest level, CDP Core, required all twelve capabilities. No agent on the market in 2026 could meet it, including the personal agents that professionals actually use.
 
-The new structure keeps every 2.0 requirement but splits them. The Core holds what any colleague-type agent needs. Modules hold what only some agents do. Nothing was dropped: see [`mappa-tracciabilita.md`](./mappa-tracciabilita.md).
+The new structure keeps every 2.0 requirement but splits them. The Core holds what any colleague-type agent needs. Modules hold what only some agents do. Nothing was dropped: see [MIGRATION.md](./MIGRATION.md).
 
 ## Version
 

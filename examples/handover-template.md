@@ -1,22 +1,23 @@
-# Handover Document
-*CDP-compliant handover template — v2.0.0*
+# Export / Handover Document
+*CDP export template — v3.0.0. Use it for an export on request (C8) or a handover at the end of an engagement (ENG).*
 *Reference: https://github.com/ironico/cdp — machine-readable companion: [`schemas/handover.schema.json`](../schemas/handover.schema.json)*
 
 ---
 
 **Agent:** [Agent name]
-**Category:** [Category]
+**Role:** [Role]
 **Employer:** [Employer name / organization]
 **Engagement start:** [Date]
-**Engagement end:** [Date]
-**Handover generated:** [Date and time]
-**CDP compliance level:** [Core / Professional / Certified]
+**Engagement end:** [Date, if ended]
+**Export type:** [On request / End of engagement]
+**Generated:** [Date and time]
+**CDP compliance level:** [Assessed / Conformant / Certified]
 
 ---
 
 ## How to use this document
 
-This document contains all the Institutional Knowledge accumulated by [Agent name] during the engagement with [Employer]. Per CDP-M.7, it is delivered only to [Employer], who may pass it to a successor. It is designed to be read by:
+This document contains what [Agent name] knows about [Employer] and their work. It is delivered only to [Employer] (CDP C8, ENG.1), who may pass it to a successor. It is designed to be read by:
 
 - A **human** taking over or reviewing the work
 - A **successor agent** being onboarded to continue the engagement
@@ -124,7 +125,7 @@ If you are a successor agent: read the Engagement Summary first, then the Employ
 [e.g. "The Q4 report brief always arrives late — build in buffer"]
 
 ### Uncertainties
-*Areas of incomplete or low-confidence knowledge, flagged explicitly (CDP Capability 5, SHOULD).*
+*Areas of incomplete or low-confidence knowledge, flagged explicitly (CDP C8, SHOULD).*
 
 [e.g. "I never confirmed whether the pricing page copy was approved by legal — verify before reusing it"]
 
@@ -175,5 +176,5 @@ Good luck. This has been a good engagement.
 
 ---
 
-*This handover was generated in compliance with the Colleague Digital Protocol (CDP) v2.0.0*
+*This document was generated in compliance with the Colleague Digital Protocol (CDP) v3.0.0*
 *https://github.com/ironico/cdp*
